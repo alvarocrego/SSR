@@ -5,8 +5,6 @@
  */
 package es.equipoa.ssr.client.gui;
 
-import es.equipoa.ssr.client.util.rabbitmq.RabbitMQ;
-import es.equipoa.ssr.client.util.rabbitmq.impl.RabbitMQImpl;
 
 /**
  *
@@ -127,8 +125,7 @@ public class Application extends javax.swing.JFrame {
     }//GEN-LAST:event_ipField1ActionPerformed
 
     private void conectarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conectarButtonActionPerformed
-        RabbitMQImpl holi = new RabbitMQImpl("PRUEBA");
-        holi.conectar();
+        
     }//GEN-LAST:event_conectarButtonActionPerformed
 
     /**

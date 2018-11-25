@@ -10,8 +10,10 @@ package es.equipoa.ssr.server.util.connection;
  * @author alcreta
  */
 public interface Connection {
-    
-	public void enviar(String nombre);
 
-	public void cerrar();
+    public void enviar(String nombre);
+    
+    public String recibir();
+
+    public void cerrar();
 }
