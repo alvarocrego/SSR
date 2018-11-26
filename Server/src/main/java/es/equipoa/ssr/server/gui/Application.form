@@ -33,6 +33,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="informacionPanel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="startButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
@@ -50,12 +52,20 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="informacionPanel" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="informacionPanel" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="startButton" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="clientesPanel" max="32767" attributes="0"/>
-                  <Component id="ficherosPanel" pref="269" max="32767" attributes="0"/>
+                  <Component id="ficherosPanel" pref="272" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -87,11 +97,11 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="ipLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="ipField1" min="-2" pref="119" max="-2" attributes="0"/>
+                  <Component id="ipField" min="-2" pref="119" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="portLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="portLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="portField1" min="-2" pref="49" max="-2" attributes="0"/>
+                  <Component id="portField" min="-2" pref="49" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -102,9 +112,9 @@
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="ipLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="ipField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="portLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="portField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ipField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="portLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="portField" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -116,21 +126,21 @@
             <Property name="text" type="java.lang.String" value="IP:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="ipField1">
+        <Component class="javax.swing.JTextField" name="ipField">
           <Properties>
             <Property name="text" type="java.lang.String" value="localhost"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ipField1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ipFieldActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="portLabel1">
+        <Component class="javax.swing.JLabel" name="portLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Port:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="portField1">
+        <Component class="javax.swing.JTextField" name="portField">
           <Properties>
             <Property name="text" type="java.lang.String" value="8182"/>
             <Property name="enabled" type="boolean" value="false"/>
@@ -160,7 +170,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="totalFicherosLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Component id="ficherosField" pref="119" max="32767" attributes="0"/>
+                          <Component id="ficherosField" pref="135" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -288,5 +298,13 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="startButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Iniciar Servidor"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="startButtonActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>

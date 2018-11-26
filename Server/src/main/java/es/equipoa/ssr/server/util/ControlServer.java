@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package es.equipoa.ssr.server.util.connection.impl;
+package es.equipoa.ssr.server.util;
 
 /**
  *
- * @author alcreta
+ * @author alcre
  */
-public class ConnectionImpl {
+public interface ControlServer {
     
 }

@@ -5,6 +5,10 @@
  */
 package es.equipoa.ssr.server.gui;
 
+import es.equipoa.ssr.server.dao.Cliente;
+import es.equipoa.ssr.server.util.impl.ControlServerImpl;
+import es.equipoa.ssr.server.util.impl.ServerConnectionImpl;
+
 /**
  *
  * @author alcreta
@@ -30,9 +34,9 @@ public class Application extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         informacionPanel = new javax.swing.JPanel();
         ipLabel1 = new javax.swing.JLabel();
-        ipField1 = new javax.swing.JTextField();
-        portLabel1 = new javax.swing.JLabel();
-        portField1 = new javax.swing.JTextField();
+        ipField = new javax.swing.JTextField();
+        portLabel = new javax.swing.JLabel();
+        portField = new javax.swing.JTextField();
         ficherosPanel = new javax.swing.JPanel();
         totalFicherosLabel = new javax.swing.JLabel();
         ficherosField = new javax.swing.JTextField();
@@ -43,6 +47,7 @@ public class Application extends javax.swing.JFrame {
         clientesList = new javax.swing.JList<>();
         totalClientesLabel = new javax.swing.JLabel();
         totalClientesField = new javax.swing.JTextField();
+        startButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Servidor");
@@ -54,18 +59,18 @@ public class Application extends javax.swing.JFrame {
 
         ipLabel1.setText("IP:");
 
-        ipField1.setText("localhost");
-        ipField1.setEnabled(false);
-        ipField1.addActionListener(new java.awt.event.ActionListener() {
+        ipField.setText("localhost");
+        ipField.setEnabled(false);
+        ipField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ipField1ActionPerformed(evt);
+                ipFieldActionPerformed(evt);
             }
         });
 
-        portLabel1.setText("Port:");
+        portLabel.setText("Port:");
 
-        portField1.setText("8182");
-        portField1.setEnabled(false);
+        portField.setText("8182");
+        portField.setEnabled(false);
 
         javax.swing.GroupLayout informacionPanelLayout = new javax.swing.GroupLayout(informacionPanel);
         informacionPanel.setLayout(informacionPanelLayout);
@@ -75,11 +80,11 @@ public class Application extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(ipLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ipField1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ipField, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(portLabel1)
+                .addComponent(portLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(portField1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(portField, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         informacionPanelLayout.setVerticalGroup(
@@ -88,9 +93,9 @@ public class Application extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(informacionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ipLabel1)
-                    .addComponent(ipField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(portLabel1)
-                    .addComponent(portField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(ipField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(portLabel)
+                    .addComponent(portField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         ficherosPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ficheros Compartidos:"));
@@ -113,7 +118,7 @@ public class Application extends javax.swing.JFrame {
                     .addGroup(ficherosPanelLayout.createSequentialGroup()
                         .addComponent(totalFicherosLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ficherosField, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)))
+                        .addComponent(ficherosField, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         ficherosPanelLayout.setVerticalGroup(
@@ -163,6 +168,13 @@ public class Application extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        startButton.setText("Iniciar Servidor");
+        startButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -174,7 +186,9 @@ public class Application extends javax.swing.JFrame {
                         .addComponent(jLabel2))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(informacionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(informacionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(startButton))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(clientesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -187,21 +201,43 @@ public class Application extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(informacionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(informacionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(startButton)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(clientesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ficherosPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE))
+                    .addComponent(ficherosPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 272, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ipField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ipField1ActionPerformed
+    private void ipFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ipFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ipField1ActionPerformed
+    }//GEN-LAST:event_ipFieldActionPerformed
+
+    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
+        int puerto = Integer.parseInt(portField.getText());
+        ControlServerImpl cs = new ControlServerImpl();
+        ServerConnectionImpl sc = new ServerConnectionImpl(8182);
+        
+        System.out.println("arrancado");
+        
+        sc.esperarConexion();
+        Cliente c = new Cliente();
+        //cs.añadirCliente();
+        
+        System.out.println("acaptado");
+        
+        
+        
+    }//GEN-LAST:event_startButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -245,13 +281,14 @@ public class Application extends javax.swing.JFrame {
     private javax.swing.JList<String> ficherosList;
     private javax.swing.JPanel ficherosPanel;
     private javax.swing.JPanel informacionPanel;
-    private javax.swing.JTextField ipField1;
+    private javax.swing.JTextField ipField;
     private javax.swing.JLabel ipLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField portField1;
-    private javax.swing.JLabel portLabel1;
+    private javax.swing.JTextField portField;
+    private javax.swing.JLabel portLabel;
+    private javax.swing.JButton startButton;
     private javax.swing.JTextField totalClientesField;
     private javax.swing.JLabel totalClientesLabel;
     private javax.swing.JLabel totalFicherosLabel;

@@ -11,6 +11,8 @@ package es.equipoa.ssr.server.util.connection;
  */
 public interface Connection {
 
+    public boolean conectar();
+    
     public void enviar(String nombre);
     
     public String recibir();

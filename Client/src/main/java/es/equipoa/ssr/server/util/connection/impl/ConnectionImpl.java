@@ -27,14 +27,18 @@ public class ConnectionImpl implements Connection {
     public ConnectionImpl(String server, int port) {
         this.HOST = server;
         this.PUERTO = port;
-        conectar();
     }
 
-    private void conectar() {
+    @Override
+    public boolean conectar() {
         try {
+            System.err.println(HOST);
+            System.err.println(PUERTO);
             sc = new Socket(HOST, PUERTO);
+            return true;
         } catch (IOException ex) {
             Logger.getLogger(ConnectionImpl.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
     }
 
@@ -52,9 +56,10 @@ public class ConnectionImpl implements Connection {
     @Override
     public String recibir() {
         BufferedReader entrada = null;
+        String res = null;
         try {
             entrada = new BufferedReader(new InputStreamReader(sc.getInputStream()));
-            
+            res = entrada.readLine();
         } catch (IOException ex) {
             Logger.getLogger(ConnectionImpl.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -64,7 +69,7 @@ public class ConnectionImpl implements Connection {
                 Logger.getLogger(ConnectionImpl.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        return null;
+        return res;
     }
 
     @Override

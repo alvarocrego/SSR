@@ -74,13 +74,13 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="ipLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="ipLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="ipField1" min="-2" pref="119" max="-2" attributes="0"/>
+                  <Component id="ipField" min="-2" pref="119" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="portLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="portLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="portField1" min="-2" pref="49" max="-2" attributes="0"/>
+                  <Component id="portField" min="-2" pref="49" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="conectarButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -92,10 +92,10 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="ipLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="ipField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="portLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="portField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ipLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="ipField" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="portLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="portField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="conectarButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -103,25 +103,25 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="ipField1">
+        <Component class="javax.swing.JTextField" name="ipField">
           <Properties>
             <Property name="text" type="java.lang.String" value="localhost"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ipField1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ipFieldActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JLabel" name="ipLabel1">
+        <Component class="javax.swing.JLabel" name="ipLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="IP:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="portLabel1">
+        <Component class="javax.swing.JLabel" name="portLabel">
           <Properties>
             <Property name="text" type="java.lang.String" value="Port:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="portField1">
+        <Component class="javax.swing.JTextField" name="portField">
           <Properties>
             <Property name="text" type="java.lang.String" value="8182"/>
           </Properties>

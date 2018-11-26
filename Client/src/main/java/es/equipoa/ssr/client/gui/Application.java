@@ -5,6 +5,8 @@
  */
 package es.equipoa.ssr.client.gui;
 
+import es.equipoa.ssr.server.util.connection.impl.ConnectionImpl;
+
 
 /**
  *
@@ -30,10 +32,10 @@ public class Application extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        ipField1 = new javax.swing.JTextField();
-        ipLabel1 = new javax.swing.JLabel();
-        portLabel1 = new javax.swing.JLabel();
-        portField1 = new javax.swing.JTextField();
+        ipField = new javax.swing.JTextField();
+        ipLabel = new javax.swing.JLabel();
+        portLabel = new javax.swing.JLabel();
+        portField = new javax.swing.JTextField();
         conectarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -44,18 +46,18 @@ public class Application extends javax.swing.JFrame {
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Servidor:"));
 
-        ipField1.setText("localhost");
-        ipField1.addActionListener(new java.awt.event.ActionListener() {
+        ipField.setText("localhost");
+        ipField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ipField1ActionPerformed(evt);
+                ipFieldActionPerformed(evt);
             }
         });
 
-        ipLabel1.setText("IP:");
+        ipLabel.setText("IP:");
 
-        portLabel1.setText("Port:");
+        portLabel.setText("Port:");
 
-        portField1.setText("8182");
+        portField.setText("8182");
 
         conectarButton.setLabel("Conectar");
         conectarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -70,13 +72,13 @@ public class Application extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ipLabel1)
+                .addComponent(ipLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ipField1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ipField, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(portLabel1)
+                .addComponent(portLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(portField1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(portField, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(conectarButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -86,10 +88,10 @@ public class Application extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ipLabel1)
-                    .addComponent(ipField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(portLabel1)
-                    .addComponent(portField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ipLabel)
+                    .addComponent(ipField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(portLabel)
+                    .addComponent(portField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(conectarButton)))
         );
 
@@ -120,12 +122,21 @@ public class Application extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ipField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ipField1ActionPerformed
+    private void ipFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ipFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ipField1ActionPerformed
+    }//GEN-LAST:event_ipFieldActionPerformed
 
     private void conectarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conectarButtonActionPerformed
-        
+        System.out.println("iniciar");
+        int puerto = Integer.parseInt(portField.getText());
+        ConnectionImpl con = new ConnectionImpl("localhost", 8182);
+        System.out.println("iniciado");
+        con.conectar();
+        System.out.println("conectado");
+        while(true){
+            System.out.println("recibiendo");
+            System.out.println(con.recibir());
+        }
     }//GEN-LAST:event_conectarButtonActionPerformed
 
     /**
@@ -165,11 +176,11 @@ public class Application extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton conectarButton;
-    private javax.swing.JTextField ipField1;
-    private javax.swing.JLabel ipLabel1;
+    private javax.swing.JTextField ipField;
+    private javax.swing.JLabel ipLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField portField1;
-    private javax.swing.JLabel portLabel1;
+    private javax.swing.JTextField portField;
+    private javax.swing.JLabel portLabel;
     // End of variables declaration//GEN-END:variables
 }
