@@ -47,16 +47,11 @@ public class ServerConnectionImpl {
         DataOutputStream salida = null;
         try {
             salida = new DataOutputStream(s.getOutputStream());
+            //salida.write(0);
             salida.writeUTF("ping");
+            salida.flush();
         } catch (IOException ex) {
             Logger.getLogger(ServerConnectionImpl.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                salida.close();
-            } catch (IOException ex) {
-                Logger.getLogger(ServerConnectionImpl.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
-
     }
 }

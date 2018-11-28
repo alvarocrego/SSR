@@ -7,6 +7,7 @@ package es.equipoa.ssr.server.util.connection.impl;
 
 import es.equipoa.ssr.server.util.connection.Connection;
 import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -55,19 +56,13 @@ public class ConnectionImpl implements Connection {
     
     @Override
     public String recibir() {
-        BufferedReader entrada = null;
+        DataInputStream entrada = null;
         String res = null;
         try {
-            entrada = new BufferedReader(new InputStreamReader(sc.getInputStream()));
-            res = entrada.readLine();
+            entrada = new DataInputStream((sc.getInputStream()));
+            res = entrada.readUTF();
         } catch (IOException ex) {
             Logger.getLogger(ConnectionImpl.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                entrada.close();
-            } catch (IOException ex) {
-                Logger.getLogger(ConnectionImpl.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
         return res;
     }

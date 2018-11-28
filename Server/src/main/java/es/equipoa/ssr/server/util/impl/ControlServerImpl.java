@@ -9,6 +9,8 @@ import es.equipoa.ssr.server.dao.Cliente;
 import es.equipoa.ssr.server.util.ControlServer;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,9 +24,15 @@ public class ControlServerImpl extends Thread implements ControlServer {
     @Override
     public void run() {
         while (true) {
-            clientes.entrySet().forEach((entry) -> {
-                ServerConnectionImpl.keepAlive(entry.getValue().getSocket());
-            });
+            try {
+                System.out.println("Ah, ha, ha, ha, stayin' alive, stayin' alive");
+                clientes.entrySet().forEach((entry) -> {
+                    ServerConnectionImpl.keepAlive(entry.getValue().getSocket());
+                });
+                sleep(5000);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(ControlServerImpl.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 

@@ -8,6 +8,7 @@ package es.equipoa.ssr.server.gui;
 import es.equipoa.ssr.server.dao.Cliente;
 import es.equipoa.ssr.server.util.impl.ControlServerImpl;
 import es.equipoa.ssr.server.util.impl.ServerConnectionImpl;
+import java.net.Socket;
 
 /**
  *
@@ -226,14 +227,22 @@ public class Application extends javax.swing.JFrame {
         int puerto = Integer.parseInt(portField.getText());
         ControlServerImpl cs = new ControlServerImpl();
         ServerConnectionImpl sc = new ServerConnectionImpl(8182);
-        
+        cs.start();
         System.out.println("arrancado");
         
-        sc.esperarConexion();
-        Cliente c = new Cliente();
-        //cs.añadirCliente();
+        while(true) {
+            System.out.println("esperando conexion");
+            Socket cliSo = sc.esperarConexion();
         
-        System.out.println("acaptado");
+            Cliente c = new Cliente();
+            c.setId(cliSo.getRemoteSocketAddress().hashCode());
+            c.setSocket(cliSo);
+
+            cs.añadirCliente(c);
+
+            System.out.println("aceptado conexion");
+        }
+       
         
         
         
