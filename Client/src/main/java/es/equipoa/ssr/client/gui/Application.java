@@ -5,7 +5,11 @@
  */
 package es.equipoa.ssr.client.gui;
 
+import com.google.gson.Gson;
+import es.equipoa.ssr.client.dao.Comunication;
 import es.equipoa.ssr.server.util.connection.impl.ConnectionImpl;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -132,6 +136,19 @@ public class Application extends javax.swing.JFrame {
         ConnectionImpl con = new ConnectionImpl("localhost", 8182);
         System.out.println("iniciado");
         con.conectar();
+        
+        List<String> f = new ArrayList<>();
+        f.add("miau.jpg");
+        f.add("cosa.doc");
+        
+        
+        Comunication c = new Comunication(1);
+        
+        c.setList(f);
+        
+        Gson gson = new Gson();
+        con.enviar(gson.toJson(c));
+        
         System.out.println("conectado");
         while(true){
             System.out.println("recibiendo");

@@ -9,6 +9,9 @@ import es.equipoa.ssr.server.dao.Cliente;
 import es.equipoa.ssr.server.util.impl.ControlServerImpl;
 import es.equipoa.ssr.server.util.impl.ServerConnectionImpl;
 import java.net.Socket;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -224,26 +227,47 @@ public class Application extends javax.swing.JFrame {
     }//GEN-LAST:event_ipFieldActionPerformed
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
+        startButton.setEnabled(false);
+        startButton.setText("Iniciado");
         int puerto = Integer.parseInt(portField.getText());
-        ControlServerImpl cs = new ControlServerImpl();
+        ControlServerImpl cs = new ControlServerImpl(clientesList);
         ServerConnectionImpl sc = new ServerConnectionImpl(8182);
         cs.start();
         System.out.println("arrancado");
-        
-        while(true) {
-            System.out.println("esperando conexion");
-            Socket cliSo = sc.esperarConexion();
-        
-            Cliente c = new Cliente();
-            c.setId(cliSo.getRemoteSocketAddress().hashCode());
-            c.setSocket(cliSo);
+        Thread t1 = new Thread(() -> {
+            AtomicInteger a = new AtomicInteger(0);
+            while(true) {
+                a.incrementAndGet();
+                System.out.println("esperando conexion");
+                Socket cliSo = sc.esperarConexion();
 
-            cs.añadirCliente(c);
+                Cliente c = new Cliente();
+                c.setId(cliSo.getRemoteSocketAddress().hashCode());
+                c.setSocket(cliSo);
 
-            System.out.println("aceptado conexion");
-        }
-       
+                cs.añadirCliente(c);
+                Thread t2 = new Thread(() -> {
+                    Socket aux = cliSo;
+                    int auxa = a.get();
+                    while(true) {
+                        try {
+                            System.out.println("Cliente: " + auxa);
+                            sc.recibir(aux);
+                            Thread.sleep(1000);
+//                        sc.recibir(aux);
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                });
+                t2.start();
+                System.out.println("aceptado conexion");
+            }
+        });
         
+        
+        
+        t1.start();
         
         
     }//GEN-LAST:event_startButtonActionPerformed

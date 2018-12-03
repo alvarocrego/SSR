@@ -5,6 +5,8 @@
  */
 package es.equipoa.ssr.server.util.impl;
 
+import com.google.gson.Gson;
+import es.equipoa.ssr.server.dao.Comunication;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -42,16 +44,11 @@ public class ServerConnectionImpl {
             return null;
         }
     }
-
-    public static void keepAlive(Socket s) {
-        DataOutputStream salida = null;
-        try {
-            salida = new DataOutputStream(s.getOutputStream());
-            //salida.write(0);
-            salida.writeUTF("ping");
-            salida.flush();
-        } catch (IOException ex) {
-            Logger.getLogger(ServerConnectionImpl.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    
+    public Comunication recibir(Socket so) {
+        Gson gson = new Gson();
+        
+        return gson.fromJson(message, Comunication.class);
     }
+
 }

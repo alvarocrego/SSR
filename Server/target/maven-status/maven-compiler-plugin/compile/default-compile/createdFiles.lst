@@ -7,3 +7,4 @@ es/equipoa/ssr/server/util/ServerConnection.class
 es/equipoa/ssr/server/util/ControlServer.class
 es/equipoa/ssr/server/gui/Application$2.class
 es/equipoa/ssr/server/gui/Application.class
+es/equipoa/ssr/server/dao/Comunication.class
