@@ -7,6 +7,7 @@ package es.equipoa.ssr.server.util.impl;
 
 import com.google.gson.Gson;
 import es.equipoa.ssr.server.dao.Comunication;
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -46,9 +47,17 @@ public class ServerConnectionImpl {
     }
     
     public Comunication recibir(Socket so) {
+        DataInputStream entrada = null;
+        String res = null;
         Gson gson = new Gson();
-        
-        return gson.fromJson(message, Comunication.class);
+        try {
+            entrada = new DataInputStream((so.getInputStream()));
+            res = entrada.readUTF();
+            
+        } catch (IOException ex) {
+            Logger.getLogger(ServerConnectionImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return gson.fromJson(res, Comunication.class);
     }
 
 }
