@@ -10,6 +10,7 @@ import es.equipoa.ssr.server.util.ControlServer;
 import java.awt.Color;
 import java.net.Socket;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,8 +28,10 @@ public class ControlServerImpl extends Thread implements ControlServer {
     Map<String, Cliente> ficheros = new HashMap<>();
     
     JList<String> cli;
-    public ControlServerImpl(JList<String> a) {
-        cli = a;
+    JList<String> fi;
+    public ControlServerImpl(JList<String> cliente, JList<String> ficheros) {
+        cli = cliente;
+        fi = ficheros;
     }
 
     @Override
@@ -36,7 +39,8 @@ public class ControlServerImpl extends Thread implements ControlServer {
         while (true) {
             try {
                 System.out.println("Ah, ha, ha, ha, stayin' alive, stayin' alive");
-                DefaultListModel<String> model = new DefaultListModel<>();
+                DefaultListModel<String> modelCliente = new DefaultListModel<>();
+                DefaultListModel<String> modelFichero = new DefaultListModel<>();
                 clientes.entrySet().forEach((entry) -> {
                     Socket s = entry.getValue().getSocket();
                     Integer id = entry.getValue().getId();
@@ -49,10 +53,14 @@ public class ControlServerImpl extends Thread implements ControlServer {
                             }
                         });
                     } else {
-                        model.addElement(Integer.toString(id));
+                        modelCliente.addElement(Integer.toString(id));
                     }
                 });
-                cli.setModel(model);
+                cli.setModel(modelCliente);
+                ficheros.entrySet().forEach((entry) -> {
+                    modelFichero.addElement(entry.getKey());
+                });
+                fi.setModel(modelFichero);
                 sleep(5000);
             } catch (InterruptedException ex) {
                 Logger.getLogger(ControlServerImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -78,6 +86,19 @@ public class ControlServerImpl extends Thread implements ControlServer {
 
     public void añadirCliente(Cliente cliente) {
         clientes.put(cliente.getId(), cliente);
+    }
+
+    public void actualizarFicheros(List<String> newFicheros, Cliente cli) {
+        ficheros.entrySet().forEach((entry) -> {
+            Integer aux = entry.getValue().getId();
+            if(aux == cli.getId()){
+                ficheros.remove(entry.getKey());
+            }
+        });
+        
+        for(String fichero : newFicheros){
+                ficheros.put(fichero, cli);
+            }
     }
 
 }

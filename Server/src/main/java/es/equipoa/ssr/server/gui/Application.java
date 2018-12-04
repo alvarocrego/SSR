@@ -6,6 +6,7 @@
 package es.equipoa.ssr.server.gui;
 
 import es.equipoa.ssr.server.dao.Cliente;
+import es.equipoa.ssr.server.dao.Comunication;
 import es.equipoa.ssr.server.util.impl.ControlServerImpl;
 import es.equipoa.ssr.server.util.impl.ServerConnectionImpl;
 import java.net.Socket;
@@ -230,13 +231,13 @@ public class Application extends javax.swing.JFrame {
         startButton.setEnabled(false);
         startButton.setText("Iniciado");
         int puerto = Integer.parseInt(portField.getText());
-        ControlServerImpl cs = new ControlServerImpl(clientesList);
-        ServerConnectionImpl sc = new ServerConnectionImpl(8182);
+        ControlServerImpl cs = new ControlServerImpl(clientesList, ficherosList);
+        ServerConnectionImpl sc = new ServerConnectionImpl(puerto);
         cs.start();
         System.out.println("arrancado");
         Thread t1 = new Thread(() -> {
             AtomicInteger a = new AtomicInteger(0);
-            while(true) {
+            while (true) {
                 a.incrementAndGet();
                 System.out.println("esperando conexion");
                 Socket cliSo = sc.esperarConexion();
@@ -248,14 +249,36 @@ public class Application extends javax.swing.JFrame {
                 cs.añadirCliente(c);
                 Thread t2 = new Thread(() -> {
                     Socket aux = cliSo;
+                    Cliente cliAux = c;
                     int auxa = a.get();
-                    while(true) {
+                    while (true) {
                         try {
                             System.out.println("Cliente: " + auxa);
-                            sc.recibir(aux);
-                            Thread.sleep(1000);
+                            Comunication comu = sc.recibir(aux);
+                            switch (comu.getTypeMessage()) {
+                                case 0: //Ping
+                                    
+                                    break;
+                                case 1: //Actualizar ficheros compartidos
+                                    cs.actualizarFicheros(comu.getList(), cliAux);
+                                    System.err.println("se ha actualizado el fichero");
+                                    break;
+                                case 2: //Busqueda de ficheros
+                                    
+                                    break;
+                                case 3: //Peticion de fichero (conxion con el otro cliente)
+                                    
+                                    break;
+                                case 4: //
+                                    
+                                    break;
+                                default:
+                                    
+                                    break;
+                            }
+                            //Thread.sleep(1000);
 //                        sc.recibir(aux);
-                        } catch (InterruptedException ex) {
+                        } catch (Exception ex) {
                             Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     }
@@ -264,12 +287,10 @@ public class Application extends javax.swing.JFrame {
                 System.out.println("aceptado conexion");
             }
         });
-        
-        
-        
+
         t1.start();
-        
-        
+
+
     }//GEN-LAST:event_startButtonActionPerformed
 
     /**
