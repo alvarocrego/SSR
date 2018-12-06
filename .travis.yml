@@ -2,5 +2,5 @@ language: java
 jdk:
   - oraclejdk11
 script:
-  - mvn Client/pom.xml clean compile test verify
-  - mvn Server/pom.xml clean compile test verify
+  - mvn -q -B -f Client/pom.xml clean verify
+  - mvn -q -B -f Server/pom.xml clean verify
