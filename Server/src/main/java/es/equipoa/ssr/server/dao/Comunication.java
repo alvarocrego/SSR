@@ -17,11 +17,11 @@ public class Comunication {
     private Integer typeMessage;
     private String message;
     private List<String> list = new ArrayList<>();
+    private List<Fichero> ficheros = new ArrayList<>();
     private Boolean ack;
 
-    public Comunication(Integer typeMessage, String message) {
+    public Comunication(Integer typeMessage) {
         this.typeMessage = typeMessage;
-        this.message = message;
     }
 
     public Integer getTypeMessage() {
@@ -46,6 +46,14 @@ public class Comunication {
 
     public void setList(List<String> list) {
         this.list = list;
+    }
+
+    public List<Fichero> getFicheros() {
+        return ficheros;
+    }
+
+    public void setFicheros(List<Fichero> ficheros) {
+        this.ficheros = ficheros;
     }
 
     public Boolean getAck() {

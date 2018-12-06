@@ -13,10 +13,10 @@ import java.util.List;
  * @author alcreta
  */
 public class Comunication {
-
-    private Integer typeMessage;
+private Integer typeMessage;
     private String message;
     private List<String> list = new ArrayList<>();
+    private List<Fichero> ficheros = new ArrayList<>();
     private Boolean ack;
 
     public Comunication(Integer typeMessage) {
@@ -45,6 +45,14 @@ public class Comunication {
 
     public void setList(List<String> list) {
         this.list = list;
+    }
+
+    public List<Fichero> getFicheros() {
+        return ficheros;
+    }
+
+    public void setFicheros(List<Fichero> ficheros) {
+        this.ficheros = ficheros;
     }
 
     public Boolean getAck() {

@@ -7,9 +7,11 @@ package es.equipoa.ssr.server.gui;
 
 import es.equipoa.ssr.server.dao.Cliente;
 import es.equipoa.ssr.server.dao.Comunication;
+import es.equipoa.ssr.server.dao.Fichero;
 import es.equipoa.ssr.server.util.impl.ControlServerImpl;
 import es.equipoa.ssr.server.util.impl.ServerConnectionImpl;
 import java.net.Socket;
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -264,7 +266,7 @@ public class Application extends javax.swing.JFrame {
                                     System.err.println("se ha actualizado el fichero");
                                     break;
                                 case 2: //Busqueda de ficheros
-                                    
+                                    List<Fichero> res = cs.buscarFicheros(comu.getMessage());
                                     break;
                                 case 3: //Peticion de fichero (conxion con el otro cliente)
                                     

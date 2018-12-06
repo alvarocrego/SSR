@@ -5,10 +5,19 @@
  */
 package es.equipoa.ssr.server.util;
 
+import es.equipoa.ssr.server.dao.Cliente;
+import es.equipoa.ssr.server.dao.Fichero;
+import java.util.List;
+
 /**
  *
  * @author alcre
  */
 public interface ControlServer {
     
+    public void actualizarFicheros(List<String> newFicheros, Cliente cli);
+    
+    public void añadirCliente(Cliente cliente);
+    
+    public List<Fichero> buscarFicheros(String busqueda);
 }
