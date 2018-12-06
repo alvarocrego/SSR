@@ -1,0 +1,6 @@
+language: java
+jdk:
+  - oraclejdk11
+script:
+  - mvn -q -B -f Client/pom.xml clean verify
+  - mvn -q -B -f Server/pom.xml clean verify
