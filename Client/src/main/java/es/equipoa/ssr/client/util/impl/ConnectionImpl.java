@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package es.equipoa.ssr.server.util.connection.impl;
+package es.equipoa.ssr.client.util.impl;
 
 import com.google.gson.Gson;
 import es.equipoa.ssr.client.dao.Comunication;
-import es.equipoa.ssr.server.util.connection.Connection;
+import es.equipoa.ssr.client.util.Connection;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
