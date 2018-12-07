@@ -18,7 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *
+ * Clase que sirve para controlar la comunicación con el servidor o con Cliente
  * @author alcreta
  */
 public class ConnectionImpl implements Connection {
@@ -27,6 +27,11 @@ public class ConnectionImpl implements Connection {
     String HOST;
     int PUERTO;
 
+    /**
+     * Inicializa los atributos de la clase necesarios para poder conectarse
+     * @param server IP del servidor al que se va a realizar la conexión
+     * @param port Puerto del servidor al que se va a realizar la conexion
+     */
     public ConnectionImpl(String server, int port) {
         this.HOST = server;
         this.PUERTO = port;

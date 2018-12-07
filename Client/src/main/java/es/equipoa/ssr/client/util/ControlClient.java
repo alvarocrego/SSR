@@ -13,7 +13,13 @@ import java.util.List;
  * @author alcreta
  */
 public interface ControlClient {
-    
+
+    /**
+     * Con la respuesta del servidor a la busqueda, muestra los ficheros en el
+     * JList
+     *
+     * @param ficheros Ficheros recibidos del servidor en la busqueda
+     */
     public void buscarFicheros(List<Fichero> ficheros);
-    
+
 }
