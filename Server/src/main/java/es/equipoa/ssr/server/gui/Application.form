@@ -143,7 +143,6 @@
         <Component class="javax.swing.JTextField" name="portField">
           <Properties>
             <Property name="text" type="java.lang.String" value="8182"/>
-            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
       </SubComponents>

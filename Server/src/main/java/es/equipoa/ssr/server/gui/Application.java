@@ -77,7 +77,6 @@ public class Application extends javax.swing.JFrame {
         portLabel.setText("Port:");
 
         portField.setText("8182");
-        portField.setEnabled(false);
 
         javax.swing.GroupLayout informacionPanelLayout = new javax.swing.GroupLayout(informacionPanel);
         informacionPanel.setLayout(informacionPanelLayout);
@@ -125,7 +124,7 @@ public class Application extends javax.swing.JFrame {
                     .addGroup(ficherosPanelLayout.createSequentialGroup()
                         .addComponent(totalFicherosLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(ficherosField, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)))
+                        .addComponent(ficherosField, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         ficherosPanelLayout.setVerticalGroup(
@@ -266,13 +265,13 @@ public class Application extends javax.swing.JFrame {
                                     System.err.println("se ha actualizado el fichero");
                                     break;
                                 case 2: //Busqueda de ficheros
-                                    List<Fichero> res = cs.buscarFicheros(comu.getMessage());
+                                    List<Fichero> res = cs.buscarFicheros(aux, comu.getMessage());
                                     break;
                                 case 3: //Peticion de fichero (conxion con el otro cliente)
-                                    
+                                    cs.enviarPeticionFichero(comu.getMessage());
                                     break;
-                                case 4: //
-                                    
+                                case 4: //Enviar al cliente solicitante la ip y puerto
+                                    cs.enviarSolicitanteIpPuerto();
                                     break;
                                 default:
                                     

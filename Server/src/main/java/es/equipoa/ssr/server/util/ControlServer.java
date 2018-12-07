@@ -7,6 +7,7 @@ package es.equipoa.ssr.server.util;
 
 import es.equipoa.ssr.server.dao.Cliente;
 import es.equipoa.ssr.server.dao.Fichero;
+import java.net.Socket;
 import java.util.List;
 
 /**
@@ -19,5 +20,9 @@ public interface ControlServer {
     
     public void añadirCliente(Cliente cliente);
     
-    public List<Fichero> buscarFicheros(String busqueda);
+    public List<Fichero> buscarFicheros(Socket so, String busqueda);
+    
+    public void enviarPeticionFichero(String idFichero);
+    
+    public void enviarSolicitanteIpPuerto();
 }

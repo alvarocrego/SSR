@@ -5,6 +5,8 @@
  */
 package es.equipoa.ssr.server.util.connection.impl;
 
+import com.google.gson.Gson;
+import es.equipoa.ssr.client.dao.Comunication;
 import es.equipoa.ssr.server.util.connection.Connection;
 import java.io.BufferedReader;
 import java.io.DataInputStream;
@@ -55,16 +57,18 @@ public class ConnectionImpl implements Connection {
     }
     
     @Override
-    public String recibir() {
+    public Comunication recibir() {
         DataInputStream entrada = null;
         String res = null;
+        Gson gson = new Gson();
         try {
             entrada = new DataInputStream((sc.getInputStream()));
             res = entrada.readUTF();
+            
         } catch (IOException ex) {
             Logger.getLogger(ConnectionImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return res;
+        return gson.fromJson(res, Comunication.class);
     }
 
     @Override

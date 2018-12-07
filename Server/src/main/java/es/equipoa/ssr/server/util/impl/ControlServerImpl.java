@@ -6,6 +6,7 @@
 package es.equipoa.ssr.server.util.impl;
 
 import es.equipoa.ssr.server.dao.Cliente;
+import es.equipoa.ssr.server.dao.Comunication;
 import es.equipoa.ssr.server.dao.Fichero;
 import es.equipoa.ssr.server.util.ControlServer;
 import java.awt.Color;
@@ -130,14 +131,32 @@ public class ControlServerImpl extends Thread implements ControlServer {
     }
     
     @Override
-    public List<Fichero> buscarFicheros(String busqueda) {
+    public List<Fichero> buscarFicheros(Socket so, String busqueda) {
         List<Fichero> res = new ArrayList<>();
         ficheros.entrySet().forEach((entry) -> {
             if(entry.getValue().getNombre().contains(busqueda)){
                 res.add(entry.getValue());
             }
         });
+        Comunication comu = new Comunication(2);
+        ServerConnectionImpl.enviar(so, busqueda);
         return res;
+    }
+    
+    private Socket getSocketByIdFichero(String idFichero){
+        return clientes.get(ficheros.get(idFichero).getIdCliente()).getSocket();
+    }
+
+    @Override
+    public void enviarPeticionFichero(String idFichero) {
+        Socket so = getSocketByIdFichero(idFichero);
+        //Comunication comu = new Comunication();
+        //ServerConnectionImpl.enviar(so, );
+    }
+
+    @Override
+    public void enviarSolicitanteIpPuerto() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

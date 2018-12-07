@@ -5,6 +5,8 @@
  */
 package es.equipoa.ssr.server.util.connection;
 
+import es.equipoa.ssr.client.dao.Comunication;
+
 /**
  *
  * @author alcreta
@@ -12,10 +14,10 @@ package es.equipoa.ssr.server.util.connection;
 public interface Connection {
 
     public boolean conectar();
-    
+
     public void enviar(String nombre);
-    
-    public String recibir();
+
+    public Comunication recibir();
 
     public void cerrar();
 }

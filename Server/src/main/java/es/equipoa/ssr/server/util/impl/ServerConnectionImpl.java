@@ -60,4 +60,13 @@ public class ServerConnectionImpl {
         return gson.fromJson(res, Comunication.class);
     }
 
+    public static void enviar(Socket so, String mensaje) {
+        try {
+            DataOutputStream salida = new DataOutputStream(so.getOutputStream());
+            salida.writeUTF(mensaje);
+        } catch (IOException ex) {
+            Logger.getLogger(ServerConnectionImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }
