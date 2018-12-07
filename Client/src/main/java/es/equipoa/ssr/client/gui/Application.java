@@ -252,28 +252,29 @@ public class Application extends javax.swing.JFrame {
         con.enviar(gson.toJson(c));
 
         System.out.println("conectado");
-        while (true) {
-            System.out.println("recibiendo");
+        Thread t1 = new Thread(() -> {
+            while (true) {
+                Comunication comu = con.recibir();
+                switch (comu.getTypeMessage()) {
+                    case 0: //Ping
 
-            Comunication comu = con.recibir();
-            switch (comu.getTypeMessage()) {
-                case 0: //Ping
+                        break;
+                    case 1: //Respuesta de Actualizar ficheros compartidos
+                        break;
+                    case 2: //Respuesta de Busqueda de ficheros
+                        comu.getFicheros();
+                        break;
+                    case 3: //Respuesta de Peticion de fichero (conxion con el otro cliente)
+                        break;
+                    case 4: //Respuesta de Enviar al cliente solicitante la ip y puerto
+                        break;
+                    default:
 
-                    break;
-                case 1: //Respuesta de Actualizar ficheros compartidos
-                    break;
-                case 2: //Respuesta de Busqueda de ficheros
-                    comu.getFicheros();
-                    break;
-                case 3: //Respuesta de Peticion de fichero (conxion con el otro cliente)
-                    break;
-                case 4: //Respuesta de Enviar al cliente solicitante la ip y puerto
-                    break;
-                default:
-
-                    break;
+                        break;
+                }
             }
-        }
+        });
+        t1.start();
     }//GEN-LAST:event_conectarButtonActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
