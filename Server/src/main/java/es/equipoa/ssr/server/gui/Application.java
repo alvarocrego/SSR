@@ -45,6 +45,7 @@ public class Application extends javax.swing.JFrame {
         portLabel = new javax.swing.JLabel();
         portField = new javax.swing.JTextField();
         startButton = new javax.swing.JButton();
+        detenerButton = new javax.swing.JButton();
         ficherosPanel = new javax.swing.JPanel();
         totalFicherosLabel = new javax.swing.JLabel();
         ficherosField = new javax.swing.JTextField();
@@ -85,6 +86,13 @@ public class Application extends javax.swing.JFrame {
             }
         });
 
+        detenerButton.setText("Detener");
+        detenerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                detenerButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout informacionPanelLayout = new javax.swing.GroupLayout(informacionPanel);
         informacionPanel.setLayout(informacionPanelLayout);
         informacionPanelLayout.setHorizontalGroup(
@@ -100,6 +108,8 @@ public class Application extends javax.swing.JFrame {
                 .addComponent(portField, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(startButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(detenerButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         informacionPanelLayout.setVerticalGroup(
@@ -111,7 +121,8 @@ public class Application extends javax.swing.JFrame {
                     .addComponent(ipField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(portLabel)
                     .addComponent(portField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(startButton)))
+                    .addComponent(startButton)
+                    .addComponent(detenerButton)))
         );
 
         ficherosPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Ficheros Compartidos:"));
@@ -292,6 +303,10 @@ public class Application extends javax.swing.JFrame {
 
     }//GEN-LAST:event_startButtonActionPerformed
 
+    private void detenerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_detenerButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_detenerButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -330,6 +345,7 @@ public class Application extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList<String> clientesList;
     private javax.swing.JPanel clientesPanel;
+    private javax.swing.JButton detenerButton;
     private javax.swing.JTextField ficherosField;
     private javax.swing.JList<String> ficherosList;
     private javax.swing.JPanel ficherosPanel;

@@ -96,6 +96,8 @@
                   <Component id="portField" min="-2" pref="49" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="startButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="detenerButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -110,6 +112,7 @@
                       <Component id="portLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="portField" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="startButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="detenerButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -146,6 +149,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="startButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="detenerButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Detener"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="detenerButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
