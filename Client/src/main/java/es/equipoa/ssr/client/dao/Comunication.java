@@ -13,7 +13,7 @@ import java.util.List;
  * @author alcreta
  */
 public class Comunication {
-private Integer typeMessage;
+    private Integer typeMessage;
     private String message;
     private List<String> list = new ArrayList<>();
     private List<Fichero> ficheros = new ArrayList<>();
@@ -62,5 +62,5 @@ private Integer typeMessage;
     public void setAck(Boolean ack) {
         this.ack = ack;
     }
-
+    
 }

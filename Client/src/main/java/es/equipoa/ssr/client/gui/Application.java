@@ -8,6 +8,7 @@ package es.equipoa.ssr.client.gui;
 import com.google.gson.Gson;
 import es.equipoa.ssr.client.dao.Comunication;
 import es.equipoa.ssr.client.util.impl.ConnectionImpl;
+import es.equipoa.ssr.client.util.impl.ControlClientImpl;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,14 +44,14 @@ public class Application extends javax.swing.JFrame {
         conectarButton = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        ficherosCompartidosList = new javax.swing.JList<>();
         anadirButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jList2 = new javax.swing.JList<>();
-        jTextField1 = new javax.swing.JTextField();
+        buscarFicherosList = new javax.swing.JList<>();
+        buscarField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         buscarButton = new javax.swing.JButton();
 
@@ -113,7 +114,7 @@ public class Application extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Ficheros Compartidos"));
 
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(ficherosCompartidosList);
 
         anadirButton.setText("Añadir");
         anadirButton.setEnabled(false);
@@ -151,7 +152,7 @@ public class Application extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Ficheros"));
 
-        jScrollPane2.setViewportView(jList2);
+        jScrollPane2.setViewportView(buscarFicherosList);
 
         jLabel2.setText("Buscar:");
 
@@ -176,7 +177,7 @@ public class Application extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField1))
+                                .addComponent(buscarField))
                             .addComponent(buscarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
@@ -186,7 +187,7 @@ public class Application extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(buscarField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(buscarButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -235,6 +236,8 @@ public class Application extends javax.swing.JFrame {
     }//GEN-LAST:event_ipFieldActionPerformed
 
     private void conectarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conectarButtonActionPerformed
+        ControlClientImpl cc = new ControlClientImpl(ficherosCompartidosList, buscarFicherosList);
+        
         System.out.println("iniciar");
         int puerto = Integer.parseInt(portField.getText());
         con = new ConnectionImpl("localhost", puerto);
@@ -251,8 +254,7 @@ public class Application extends javax.swing.JFrame {
 
         c.setList(f);
 
-        Gson gson = new Gson();
-        con.enviar(gson.toJson(c));
+        con.enviar(c);
 
         System.out.println("conectado");
         Thread t1 = new Thread(() -> {
@@ -265,7 +267,7 @@ public class Application extends javax.swing.JFrame {
                     case 1: //Respuesta de Actualizar ficheros compartidos
                         break;
                     case 2: //Respuesta de Busqueda de ficheros
-                        comu.getFicheros();
+                        cc.buscarFicheros(comu.getFicheros());
                         break;
                     case 3: //Respuesta de Peticion de fichero (conxion con el otro cliente)
                         break;
@@ -283,7 +285,9 @@ public class Application extends javax.swing.JFrame {
     }//GEN-LAST:event_conectarButtonActionPerformed
 
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
-        // TODO add your handling code here:
+        Comunication comunication = new Comunication(2);
+        comunication.setMessage(buscarField.getText());
+        con.enviar(comunication);
     }//GEN-LAST:event_buscarButtonActionPerformed
 
     /**
@@ -324,20 +328,20 @@ public class Application extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton anadirButton;
     private javax.swing.JButton buscarButton;
+    private javax.swing.JList<String> buscarFicherosList;
+    private javax.swing.JTextField buscarField;
     private javax.swing.JButton conectarButton;
+    private javax.swing.JList<String> ficherosCompartidosList;
     private javax.swing.JTextField ipField;
     private javax.swing.JLabel ipLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JList<String> jList1;
-    private javax.swing.JList<String> jList2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField portField;
     private javax.swing.JLabel portLabel;

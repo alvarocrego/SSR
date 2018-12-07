@@ -263,7 +263,7 @@ public class Application extends javax.swing.JFrame {
                                     System.err.println("se ha actualizado el fichero");
                                     break;
                                 case 2: //Busqueda de ficheros
-                                    List<Fichero> res = cs.buscarFicheros(aux, comu.getMessage());
+                                    cs.buscarFicheros(aux, comu.getMessage());
                                     break;
                                 case 3: //Peticion de fichero (conxion con el otro cliente)
                                     cs.enviarPeticionFichero(comu.getMessage());

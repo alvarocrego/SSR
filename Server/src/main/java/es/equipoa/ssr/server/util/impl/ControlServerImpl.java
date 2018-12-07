@@ -131,7 +131,7 @@ public class ControlServerImpl extends Thread implements ControlServer {
     }
     
     @Override
-    public List<Fichero> buscarFicheros(Socket so, String busqueda) {
+    public void buscarFicheros(Socket so, String busqueda) {
         List<Fichero> res = new ArrayList<>();
         ficheros.entrySet().forEach((entry) -> {
             if(entry.getValue().getNombre().contains(busqueda)){
@@ -139,8 +139,8 @@ public class ControlServerImpl extends Thread implements ControlServer {
             }
         });
         Comunication comu = new Comunication(2);
-        ServerConnectionImpl.enviar(so, busqueda);
-        return res;
+        comu.setFicheros(res);
+        ServerConnectionImpl.enviar(so, comu);;
     }
     
     private Socket getSocketByIdFichero(String idFichero){

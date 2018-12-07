@@ -46,10 +46,11 @@ public class ConnectionImpl implements Connection {
     }
 
     @Override
-    public void enviar(String texto) {
+    public void enviar(Comunication mensaje) {
+        Gson gson = new Gson();
         try {
             DataOutputStream salida = new DataOutputStream(sc.getOutputStream());
-            salida.writeUTF(texto);
+            salida.writeUTF(gson.toJson(mensaje));
         } catch (IOException ex) {
             Logger.getLogger(ConnectionImpl.class.getName()).log(Level.SEVERE, null, ex);
         }

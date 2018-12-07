@@ -5,19 +5,15 @@
  */
 package es.equipoa.ssr.client.util;
 
-import es.equipoa.ssr.client.dao.Comunication;
+import es.equipoa.ssr.client.dao.Fichero;
+import java.util.List;
 
 /**
  *
  * @author alcreta
  */
-public interface Connection {
-
-    public boolean conectar();
-
-    public void enviar(Comunication nombre);
-
-    public Comunication recibir();
-
-    public void cerrar();
+public interface ControlClient {
+    
+    public void buscarFicheros(List<Fichero> ficheros);
+    
 }
