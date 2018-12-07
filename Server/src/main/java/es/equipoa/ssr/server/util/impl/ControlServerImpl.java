@@ -27,7 +27,7 @@ import javax.swing.JTextField;
 public class ControlServerImpl extends Thread implements ControlServer {
 
     Map<Integer, Cliente> clientes = new HashMap<>();
-    Map<Integer, Fichero> ficheros = new HashMap<>();
+    Map<String, Fichero> ficheros = new HashMap<>();
     
     JList<String> cli;
     JList<String> fi;
@@ -78,11 +78,11 @@ public class ControlServerImpl extends Thread implements ControlServer {
         this.clientes = clientes;
     }
 
-    public Map<Integer, Fichero> getFicheros() {
+    public Map<String, Fichero> getFicheros() {
         return ficheros;
     }
 
-    public void setFicheros(Map<Integer, Fichero> ficheros) {
+    public void setFicheros(Map<String, Fichero> ficheros) {
         this.ficheros = ficheros;
     }
 
@@ -96,12 +96,12 @@ public class ControlServerImpl extends Thread implements ControlServer {
         fichero.setId(crearIdFichero(nombre, idCliente));
         fichero.setNombre(nombre);
         fichero.setIdCliente(idCliente);
-        
-        ficheros.put(idCliente, fichero);
+        System.err.println("He pasado por aqui");
+        ficheros.put(fichero.getId(), fichero);
     }
     
-    private Integer crearIdFichero (String fichero, Integer idCliente) {
-        return Integer.parseInt((Integer.toString(idCliente) + fichero));
+    private String crearIdFichero (String fichero, Integer idCliente) {
+        return (Integer.toString(idCliente) + Integer.toString(fichero.hashCode()));
     }
 
     public void borrarFicherosPorCliente(Cliente cli) {

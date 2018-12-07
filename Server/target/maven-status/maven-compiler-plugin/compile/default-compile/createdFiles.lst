@@ -4,6 +4,7 @@ es/equipoa/ssr/server/gui/Application$1.class
 es/equipoa/ssr/server/dao/Cliente.class
 es/equipoa/ssr/server/util/impl/ServerConnectionImpl.class
 es/equipoa/ssr/server/util/ServerConnection.class
+es/equipoa/ssr/server/dao/Fichero.class
 es/equipoa/ssr/server/util/ControlServer.class
 es/equipoa/ssr/server/gui/Application$2.class
 es/equipoa/ssr/server/gui/Application.class

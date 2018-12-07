@@ -11,15 +11,15 @@ package es.equipoa.ssr.server.dao;
  */
 public class Fichero {
     
-    Integer id;
+    String id;
     String nombre;
     Integer idCliente;
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 

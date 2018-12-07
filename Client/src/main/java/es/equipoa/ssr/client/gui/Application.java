@@ -140,7 +140,8 @@ public class Application extends javax.swing.JFrame {
         List<String> f = new ArrayList<>();
         f.add("miau.jpg");
         f.add("cosa.doc");
-        
+        f.add("otro.doc");
+        f.add("probando.doc");
         
         Comunication c = new Comunication(1);
         
