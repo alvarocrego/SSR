@@ -10,7 +10,7 @@ package es.equipoa.ssr.server.dao;
  * @author alcre
  */
 public class Fichero {
-    
+
     String id;
     String nombre;
     Integer idCliente;

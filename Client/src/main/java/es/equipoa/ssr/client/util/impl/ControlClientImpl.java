@@ -13,36 +13,40 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 
 /**
- * Esta clase tiene los atributos necesarios para que el servidor funcione y los metodos necesarios
+ * Esta clase tiene los atributos necesarios para que el servidor funcione y los
+ * metodos necesarios
+ *
  * @author alcreta
  */
-public class ControlClientImpl implements ControlClient{
+public class ControlClientImpl implements ControlClient {
 
     private List<Fichero> ficherosCompartidos = new ArrayList<>();
 
-    
     private JList<String> listaFicherosCompartidos;
     private JList<String> listaFicherosBuscados;
 
     /**
-     * El constructor necesita que se pasen las dos JList de la interfaz para poder actualizarla
-     * @param listaFicherosCompartidos JList que muestra los ficheros compartidos con el servidor
-     * @param listaFicherosBuscados JList que muestra los ficheros que ha recibido del servidor
+     * El constructor necesita que se pasen las dos JList de la interfaz para
+     * poder actualizarla
+     *
+     * @param listaFicherosCompartidos JList que muestra los ficheros
+     * compartidos con el servidor
+     * @param listaFicherosBuscados JList que muestra los ficheros que ha
+     * recibido del servidor
      */
     public ControlClientImpl(JList<String> listaFicherosCompartidos, JList<String> listaFicherosBuscados) {
         this.listaFicherosCompartidos = listaFicherosCompartidos;
         this.listaFicherosBuscados = listaFicherosBuscados;
     }
-    
+
     @Override
     public void buscarFicheros(List<Fichero> ficheros) {
         listaFicherosBuscados.removeAll();
         DefaultListModel model = new DefaultListModel();
-        for(Fichero fichero:ficheros){
+        for (Fichero fichero : ficheros) {
             model.addElement(fichero.getNombre() + " - " + fichero.getId());
         }
         listaFicherosBuscados.setModel(model);
     }
-    
-    
+
 }

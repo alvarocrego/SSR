@@ -7,6 +7,7 @@ package es.equipoa.ssr.server.util.impl;
 
 import com.google.gson.Gson;
 import es.equipoa.ssr.server.dao.Comunication;
+import es.equipoa.ssr.server.util.ServerConnection;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -19,7 +20,7 @@ import java.util.logging.Logger;
  *
  * @author alcreta
  */
-public class ServerConnectionImpl {
+public class ServerConnectionImpl implements ServerConnection {
 
     ServerSocket sc;
     int PUERTO;
@@ -45,7 +46,8 @@ public class ServerConnectionImpl {
             return null;
         }
     }
-    
+
+    @Override
     public Comunication recibir(Socket so) {
         DataInputStream entrada = null;
         String res = null;
@@ -53,13 +55,19 @@ public class ServerConnectionImpl {
         try {
             entrada = new DataInputStream((so.getInputStream()));
             res = entrada.readUTF();
-            
+
         } catch (IOException ex) {
             Logger.getLogger(ServerConnectionImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
         return gson.fromJson(res, Comunication.class);
     }
 
+    /**
+     * Envia un objeto de tipo Comunication por el socket
+     *
+     * @param so Socket por donde se enviará el mensaje
+     * @param mensaje Objeto de tiempo Comunication que se enviará por el socket
+     */
     public static void enviar(Socket so, Comunication mensaje) {
         Gson gson = new Gson();
         try {
@@ -69,5 +77,14 @@ public class ServerConnectionImpl {
             Logger.getLogger(ServerConnectionImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
+    @Override
+    public void cerrar(Socket so) {
+        try {
+            so.close();
+        } catch (IOException ex) {
+            Logger.getLogger(ServerConnectionImpl.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
 }

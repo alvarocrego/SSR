@@ -7,11 +7,9 @@ package es.equipoa.ssr.server.gui;
 
 import es.equipoa.ssr.server.dao.Cliente;
 import es.equipoa.ssr.server.dao.Comunication;
-import es.equipoa.ssr.server.dao.Fichero;
 import es.equipoa.ssr.server.util.impl.ControlServerImpl;
 import es.equipoa.ssr.server.util.impl.ServerConnectionImpl;
 import java.net.Socket;
-import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -267,7 +265,7 @@ public class Application extends javax.swing.JFrame {
                             Comunication comu = sc.recibir(aux);
                             switch (comu.getTypeMessage()) {
                                 case 0: //Ping
-                                    
+
                                     break;
                                 case 1: //Actualizar ficheros compartidos
                                     cs.actualizarFicheros(comu.getList(), cliAux);
@@ -283,7 +281,7 @@ public class Application extends javax.swing.JFrame {
                                     cs.enviarSolicitanteIpPuerto();
                                     break;
                                 default:
-                                    
+
                                     break;
                             }
                             //Thread.sleep(1000);

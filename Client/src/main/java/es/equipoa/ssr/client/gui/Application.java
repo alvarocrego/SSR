@@ -20,6 +20,7 @@ public class Application extends javax.swing.JFrame {
 
     ConnectionImpl con;
     Thread t1;
+
     /**
      * Creates new form Application
      */
@@ -257,7 +258,7 @@ public class Application extends javax.swing.JFrame {
         con = new ConnectionImpl("localhost", puerto);
         System.out.println("iniciado");
         con.conectar();
-        
+
         List<String> f = new ArrayList<>();
         f.add("miau.jpg");
         f.add("cosa.doc");

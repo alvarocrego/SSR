@@ -15,14 +15,14 @@ import java.util.List;
  * @author alcre
  */
 public interface ControlServer {
-    
+
     public void actualizarFicheros(List<String> newFicheros, Cliente cli);
-    
+
     public void añadirCliente(Cliente cliente);
-    
+
     public void buscarFicheros(Socket so, String busqueda);
-    
+
     public void enviarPeticionFichero(String idFichero);
-    
+
     public void enviarSolicitanteIpPuerto();
 }

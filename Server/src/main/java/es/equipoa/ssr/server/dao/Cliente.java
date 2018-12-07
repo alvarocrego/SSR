@@ -14,7 +14,7 @@ import java.net.Socket;
 public class Cliente {
 
     Integer id;
-    
+
     Socket so;
 
     public Integer getId() {

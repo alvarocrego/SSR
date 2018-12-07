@@ -8,17 +8,16 @@ package es.equipoa.ssr.client.util.impl;
 import com.google.gson.Gson;
 import es.equipoa.ssr.client.dao.Comunication;
 import es.equipoa.ssr.client.util.Connection;
-import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.Socket;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
  * Clase que sirve para controlar la comunicación con el servidor o con Cliente
+ *
  * @author alcreta
  */
 public class ConnectionImpl implements Connection {
@@ -29,6 +28,7 @@ public class ConnectionImpl implements Connection {
 
     /**
      * Inicializa los atributos de la clase necesarios para poder conectarse
+     *
      * @param server IP del servidor al que se va a realizar la conexión
      * @param port Puerto del servidor al que se va a realizar la conexion
      */
@@ -61,7 +61,7 @@ public class ConnectionImpl implements Connection {
         }
 
     }
-    
+
     @Override
     public Comunication recibir() {
         DataInputStream entrada = null;
@@ -70,7 +70,7 @@ public class ConnectionImpl implements Connection {
         try {
             entrada = new DataInputStream((sc.getInputStream()));
             res = entrada.readUTF();
-            
+
         } catch (IOException ex) {
             Logger.getLogger(ConnectionImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
