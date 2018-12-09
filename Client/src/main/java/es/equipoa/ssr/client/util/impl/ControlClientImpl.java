@@ -44,7 +44,7 @@ public class ControlClientImpl implements ControlClient {
         listaFicherosBuscados.removeAll();
         DefaultListModel model = new DefaultListModel();
         for (Fichero fichero : ficheros) {
-            model.addElement(fichero.getNombre() + " - " + fichero.getId());
+            model.addElement(fichero.getNombre() + " ~ " + fichero.getId());
         }
         listaFicherosBuscados.setModel(model);
     }

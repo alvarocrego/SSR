@@ -11,6 +11,8 @@ import es.equipoa.ssr.client.util.impl.ConnectionImpl;
 import es.equipoa.ssr.client.util.impl.ControlClientImpl;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -57,6 +59,7 @@ public class Application extends javax.swing.JFrame {
         buscarField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         buscarButton = new javax.swing.JButton();
+        descargarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cliente");
@@ -178,6 +181,13 @@ public class Application extends javax.swing.JFrame {
             }
         });
 
+        descargarButton.setText("Descargar");
+        descargarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descargarButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -192,7 +202,8 @@ public class Application extends javax.swing.JFrame {
                                 .addComponent(jLabel2)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(buscarField))
-                            .addComponent(buscarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(buscarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(descargarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -202,11 +213,13 @@ public class Application extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(buscarField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buscarButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(descargarButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -285,6 +298,7 @@ public class Application extends javax.swing.JFrame {
                         cc.buscarFicheros(comu.getFicheros());
                         break;
                     case 3: //Respuesta de Peticion de fichero (conxion con el otro cliente)
+
                         break;
                     case 4: //Respuesta de Enviar al cliente solicitante la ip y puerto
                         break;
@@ -309,6 +323,39 @@ public class Application extends javax.swing.JFrame {
         t1.interrupt();
         con.cerrar();
     }//GEN-LAST:event_desconectarButtonActionPerformed
+
+    private void descargarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descargarButtonActionPerformed
+        int itemsSeleccionados = buscarFicherosList.getSelectedValuesList().size();
+        if (itemsSeleccionados > 1) {
+            mostrarMensaje("Descargar", "No puedes seleccionar mas de un fichero para descargar.", 2);
+        } else if (itemsSeleccionados < 1) {
+            mostrarMensaje("Descargar", "Selecciona un fichero para descargar.", 2);
+        } else {
+            String idFichero = buscarFicherosList.getSelectedValue().split("~")[1].trim();
+            
+            Comunication comunication = new Comunication(3);
+            comunication.setMessage(idFichero);
+            System.out.println(idFichero);
+        }
+    }//GEN-LAST:event_descargarButtonActionPerformed
+
+    private void mostrarMensaje(String titulo, String texto, int tipo) {
+        switch (tipo) {
+            case 1:
+                JOptionPane.showMessageDialog(this, texto, titulo, JOptionPane.INFORMATION_MESSAGE);
+                break;
+            case 2:
+                JOptionPane.showMessageDialog(this, texto, titulo, JOptionPane.WARNING_MESSAGE);
+                break;
+            case 3:
+                JOptionPane.showMessageDialog(this, texto, titulo, JOptionPane.ERROR_MESSAGE);
+                break;
+            default:
+                JOptionPane.showMessageDialog(this, texto, titulo, JOptionPane.PLAIN_MESSAGE);
+                break;
+        }
+
+    }
 
     /**
      * @param args the command line arguments
@@ -351,6 +398,7 @@ public class Application extends javax.swing.JFrame {
     private javax.swing.JList<String> buscarFicherosList;
     private javax.swing.JTextField buscarField;
     private javax.swing.JButton conectarButton;
+    private javax.swing.JButton descargarButton;
     private javax.swing.JButton desconectarButton;
     private javax.swing.JList<String> ficherosCompartidosList;
     private javax.swing.JTextField ipField;

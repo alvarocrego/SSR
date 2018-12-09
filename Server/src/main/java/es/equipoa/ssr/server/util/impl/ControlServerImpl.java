@@ -130,11 +130,13 @@ public class ControlServerImpl extends Thread implements ControlServer {
     }
 
     @Override
-    public void buscarFicheros(Socket so, String busqueda) {
+    public void buscarFicheros(Socket so, String busqueda, Cliente cli) {
         List<Fichero> res = new ArrayList<>();
         ficheros.entrySet().forEach((entry) -> {
             if (entry.getValue().getNombre().contains(busqueda)) {
-                res.add(entry.getValue());
+                if(entry.getValue().getIdCliente() != cli.getId()){
+                    res.add(entry.getValue());
+                }
             }
         });
         Comunication comu = new Comunication(2);

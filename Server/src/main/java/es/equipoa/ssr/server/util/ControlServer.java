@@ -20,7 +20,7 @@ public interface ControlServer {
 
     public void añadirCliente(Cliente cliente);
 
-    public void buscarFicheros(Socket so, String busqueda);
+    public void buscarFicheros(Socket so, String busqueda, Cliente cli);
 
     public void enviarPeticionFichero(String idFichero);
 
