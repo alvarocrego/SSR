@@ -5,6 +5,7 @@
  */
 package es.equipoa.ssr.client.util.impl;
 
+import es.equipoa.ssr.client.dao.Comunication;
 import es.equipoa.ssr.client.dao.Fichero;
 import es.equipoa.ssr.client.util.ControlClient;
 import java.util.ArrayList;
@@ -47,6 +48,14 @@ public class ControlClientImpl implements ControlClient {
             model.addElement(fichero.getNombre() + " ~ " + fichero.getId());
         }
         listaFicherosBuscados.setModel(model);
+    }
+    
+    public Comunication responderPeticionFichero(String idFichero) {
+        Comunication c = new Comunication(4);
+        c.setMessage(idFichero);
+//        c.setIp();
+        
+        return c;
     }
 
 }
