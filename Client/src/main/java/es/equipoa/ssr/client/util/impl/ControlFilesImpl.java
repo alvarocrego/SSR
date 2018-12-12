@@ -16,10 +16,10 @@ import java.util.List;
  */
 public class ControlFilesImpl implements ControlFiles {
 
-    private String ruta;
+    private File carpeta;
 
     public ControlFilesImpl(String ruta) {
-        this.ruta = ruta;
+        inicializar(ruta);
     }
 
     @Override
@@ -40,6 +40,37 @@ public class ControlFilesImpl implements ControlFiles {
     @Override
     public File obtenerFichero(Fichero fichero) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    /**
+     * Comprueba y crea la carpeta en caso de no existir
+     */
+    private void inicializar(String ruta) {
+        if (!existeLaCarpeta(ruta)) {
+            crearCarpeta(ruta);
+        }
+    }
+
+    /**
+     * Comprueba si la carpeta existe
+     *
+     * @return
+     */
+    private Boolean existeLaCarpeta(String ruta) {
+        File tmp = new File(ruta);
+        if(tmp.exists()){
+            return tmp.isDirectory();
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * Crea una carpeta
+     */
+    private void crearCarpeta(String ruta) {
+        carpeta = new File(ruta);
+        carpeta.mkdirs();
     }
 
 }
