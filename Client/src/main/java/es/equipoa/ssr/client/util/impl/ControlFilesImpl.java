@@ -50,8 +50,8 @@ public class ControlFilesImpl implements ControlFiles {
      * Comprueba y crea la carpeta en caso de no existir
      */
     private void inicializar(String ruta) {
-        File f = new File(ClassLoader.getSystemClassLoader().getResource(".").getPath());
-        System.out.println(f.getAbsolutePath() + "\\" + ruta);
+//        File f = new File(ClassLoader.getSystemClassLoader().getResource(".").getPath());
+//        System.out.println(f.getAbsolutePath() + "\\" + ruta);
         if (!existeLaCarpeta(ruta)) {
             crearCarpeta(ruta);
         }
