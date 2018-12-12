@@ -151,8 +151,9 @@ public class ControlServerImpl extends Thread implements ControlServer {
     @Override
     public void enviarPeticionFichero(String idFichero) {
         Socket so = getSocketByIdFichero(idFichero);
-        //Comunication comu = new Comunication();
-        //ServerConnectionImpl.enviar(so, );
+        Comunication comu = new Comunication(3);
+        comu.getMessage();
+        ServerConnectionImpl.enviar(so, comu);
     }
 
     @Override

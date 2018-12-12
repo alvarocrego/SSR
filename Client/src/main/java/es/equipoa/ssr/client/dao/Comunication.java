@@ -18,6 +18,8 @@ public class Comunication {
     private String message;
     private List<String> list = new ArrayList<>();
     private List<Fichero> ficheros = new ArrayList<>();
+    private String ip;
+    private Integer port;
     private Boolean ack;
 
     public Comunication(Integer typeMessage) {
@@ -54,6 +56,22 @@ public class Comunication {
 
     public void setFicheros(List<Fichero> ficheros) {
         this.ficheros = ficheros;
+    }
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    public Integer getPort() {
+        return port;
+    }
+
+    public void setPort(Integer port) {
+        this.port = port;
     }
 
     public Boolean getAck() {

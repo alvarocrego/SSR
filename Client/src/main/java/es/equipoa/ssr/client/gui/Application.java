@@ -298,9 +298,10 @@ public class Application extends javax.swing.JFrame {
                         cc.buscarFicheros(comu.getFicheros());
                         break;
                     case 3: //Respuesta de Peticion de fichero (conxion con el otro cliente)
-
+//                        cc.responderPeticionFichero(idFichero, )
                         break;
                     case 4: //Respuesta de Enviar al cliente solicitante la ip y puerto
+                        
                         break;
                     default:
 
@@ -335,7 +336,7 @@ public class Application extends javax.swing.JFrame {
             
             Comunication comunication = new Comunication(3);
             comunication.setMessage(idFichero);
-            System.out.println(idFichero);
+            con.enviar(comunication);
         }
     }//GEN-LAST:event_descargarButtonActionPerformed
 
