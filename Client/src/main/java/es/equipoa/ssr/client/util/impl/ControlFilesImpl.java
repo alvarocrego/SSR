@@ -6,9 +6,13 @@
 package es.equipoa.ssr.client.util.impl;
 
 import es.equipoa.ssr.client.dao.Fichero;
+import es.equipoa.ssr.client.gui.Application;
 import es.equipoa.ssr.client.util.ControlFiles;
 import java.io.File;
+import java.net.URISyntaxException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -46,6 +50,8 @@ public class ControlFilesImpl implements ControlFiles {
      * Comprueba y crea la carpeta en caso de no existir
      */
     private void inicializar(String ruta) {
+        File f = new File(ClassLoader.getSystemClassLoader().getResource(".").getPath());
+        System.out.println(f.getAbsolutePath() + "\\" + ruta);
         if (!existeLaCarpeta(ruta)) {
             crearCarpeta(ruta);
         }
@@ -58,7 +64,7 @@ public class ControlFilesImpl implements ControlFiles {
      */
     private Boolean existeLaCarpeta(String ruta) {
         File tmp = new File(ruta);
-        if(tmp.exists()){
+        if (tmp.exists()) {
             return tmp.isDirectory();
         } else {
             return false;

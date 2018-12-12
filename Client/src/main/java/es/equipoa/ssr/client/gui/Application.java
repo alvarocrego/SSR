@@ -9,6 +9,7 @@ import com.google.gson.Gson;
 import es.equipoa.ssr.client.dao.Comunication;
 import es.equipoa.ssr.client.util.impl.ConnectionImpl;
 import es.equipoa.ssr.client.util.impl.ControlClientImpl;
+import es.equipoa.ssr.client.util.impl.ControlFilesImpl;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JDialog;
@@ -22,6 +23,8 @@ public class Application extends javax.swing.JFrame {
 
     ConnectionImpl con;
     Thread t1;
+    ControlFilesImpl cfDescargas = new ControlFilesImpl("descargas");
+    ControlFilesImpl cfCompartir = new ControlFilesImpl("compartir");
 
     /**
      * Creates new form Application
