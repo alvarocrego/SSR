@@ -8,6 +8,7 @@ package es.equipoa.ssr.client.util;
 import es.equipoa.ssr.client.dao.Fichero;
 import java.io.File;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -21,7 +22,7 @@ public interface ControlFiles {
      * Lee en la carpeta los archivos y los devuelve en una lista de tipo Fichero
      * @return Lista de Ficheros en la carpeta
      */
-    public List<Fichero> obtenerListaDeFicheros();
+    public List<String> obtenerListaDeFicheros();
     
     /**
      * Guarda en la carpeta el Fichero pasado

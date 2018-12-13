@@ -1,8 +1,8 @@
-C:\Users\alcre\Documents\NetBeansProjects\SSR\Server\src\main\java\es\equipoa\ssr\server\util\ControlServer.java
-C:\Users\alcre\Documents\NetBeansProjects\SSR\Server\src\main\java\es\equipoa\ssr\server\util\impl\ControlServerImpl.java
-C:\Users\alcre\Documents\NetBeansProjects\SSR\Server\src\main\java\es\equipoa\ssr\server\dao\Fichero.java
-C:\Users\alcre\Documents\NetBeansProjects\SSR\Server\src\main\java\es\equipoa\ssr\server\gui\Application.java
-C:\Users\alcre\Documents\NetBeansProjects\SSR\Server\src\main\java\es\equipoa\ssr\server\dao\Cliente.java
-C:\Users\alcre\Documents\NetBeansProjects\SSR\Server\src\main\java\es\equipoa\ssr\server\util\impl\ServerConnectionImpl.java
-C:\Users\alcre\Documents\NetBeansProjects\SSR\Server\src\main\java\es\equipoa\ssr\server\util\ServerConnection.java
-C:\Users\alcre\Documents\NetBeansProjects\SSR\Server\src\main\java\es\equipoa\ssr\server\dao\Comunication.java
+/Users/alcreta/NetBeansProjects/SSR/Server/src/main/java/es/equipoa/ssr/server/util/ServerConnection.java
+/Users/alcreta/NetBeansProjects/SSR/Server/src/main/java/es/equipoa/ssr/server/dao/Fichero.java
+/Users/alcreta/NetBeansProjects/SSR/Server/src/main/java/es/equipoa/ssr/server/util/impl/ControlServerImpl.java
+/Users/alcreta/NetBeansProjects/SSR/Server/src/main/java/es/equipoa/ssr/server/gui/Application.java
+/Users/alcreta/NetBeansProjects/SSR/Server/src/main/java/es/equipoa/ssr/server/dao/Comunication.java
+/Users/alcreta/NetBeansProjects/SSR/Server/src/main/java/es/equipoa/ssr/server/util/impl/ServerConnectionImpl.java
+/Users/alcreta/NetBeansProjects/SSR/Server/src/main/java/es/equipoa/ssr/server/util/ControlServer.java
+/Users/alcreta/NetBeansProjects/SSR/Server/src/main/java/es/equipoa/ssr/server/dao/Cliente.java

@@ -10,7 +10,10 @@ import es.equipoa.ssr.client.gui.Application;
 import es.equipoa.ssr.client.util.ControlFiles;
 import java.io.File;
 import java.net.URISyntaxException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -21,6 +24,7 @@ import java.util.logging.Logger;
 public class ControlFilesImpl implements ControlFiles {
 
     private File carpeta;
+    private Map<String, File> archivos;
 
     public ControlFilesImpl(String ruta) {
         inicializar(ruta);
@@ -32,8 +36,15 @@ public class ControlFilesImpl implements ControlFiles {
     }
 
     @Override
-    public List<Fichero> obtenerListaDeFicheros() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<String> obtenerListaDeFicheros() {
+        Map<String, File> list = new HashMap<>();
+        File[] files = carpeta.listFiles();
+        for (File file : files) {
+            if(file.isFile())
+                list.put(file.getName(), file);
+        }
+        archivos = list;
+        return new ArrayList<>(list.keySet());
     }
 
     @Override
@@ -43,7 +54,7 @@ public class ControlFilesImpl implements ControlFiles {
 
     @Override
     public File obtenerFichero(Fichero fichero) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return archivos.get(fichero.getNombre());
     }
 
     /**
@@ -52,6 +63,7 @@ public class ControlFilesImpl implements ControlFiles {
     private void inicializar(String ruta) {
 //        File f = new File(ClassLoader.getSystemClassLoader().getResource(".").getPath());
 //        System.out.println(f.getAbsolutePath() + "\\" + ruta);
+        carpeta = new File(ruta);
         if (!existeLaCarpeta(ruta)) {
             crearCarpeta(ruta);
         }

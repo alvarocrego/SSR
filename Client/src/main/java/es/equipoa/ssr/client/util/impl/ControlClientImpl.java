@@ -49,12 +49,18 @@ public class ControlClientImpl implements ControlClient {
         }
         listaFicherosBuscados.setModel(model);
     }
-    
+
+    public Comunication actualizarFicherosCompartidos(List<String> ficheros) {
+        Comunication c = new Comunication(1);
+        c.setList(ficheros);
+        return c;
+    }
+
     public Comunication responderPeticionFichero(String idFichero) {
         Comunication c = new Comunication(4);
         c.setMessage(idFichero);
 //        c.setIp();
-        
+
         return c;
     }
 

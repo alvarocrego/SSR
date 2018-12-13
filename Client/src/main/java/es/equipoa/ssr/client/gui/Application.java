@@ -5,14 +5,10 @@
  */
 package es.equipoa.ssr.client.gui;
 
-import com.google.gson.Gson;
 import es.equipoa.ssr.client.dao.Comunication;
 import es.equipoa.ssr.client.util.impl.ConnectionImpl;
 import es.equipoa.ssr.client.util.impl.ControlClientImpl;
 import es.equipoa.ssr.client.util.impl.ControlFilesImpl;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 /**
@@ -267,25 +263,20 @@ public class Application extends javax.swing.JFrame {
 
     private void conectarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conectarButtonActionPerformed
         ControlClientImpl cc = new ControlClientImpl(ficherosCompartidosList, buscarFicherosList);
+        
         conectarButton.setEnabled(false);
         desconectarButton.setEnabled(true);
+        
         System.out.println("iniciar");
+        
         int puerto = Integer.parseInt(portField.getText());
         con = new ConnectionImpl("localhost", puerto);
+        
         System.out.println("iniciado");
+        
         con.conectar();
-
-        List<String> f = new ArrayList<>();
-        f.add("miau.jpg");
-        f.add("cosa.doc");
-        f.add("otro.doc");
-        f.add("probando.doc");
-
-        Comunication c = new Comunication(1);
-
-        c.setList(f);
-
-        con.enviar(c);
+        
+        con.enviar(cc.actualizarFicherosCompartidos(cfCompartir.obtenerListaDeFicheros()));
 
         System.out.println("conectado");
         t1 = new Thread(() -> {
