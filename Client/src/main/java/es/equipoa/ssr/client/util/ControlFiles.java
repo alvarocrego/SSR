@@ -6,17 +6,13 @@
 package es.equipoa.ssr.client.util;
 
 import es.equipoa.ssr.client.dao.Fichero;
-import java.io.File;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
  * @author alcre
  */
 public interface ControlFiles {
-    
-    public void ControlFiles(String prueba);
     
     /**
      * Lee en la carpeta los archivos y los devuelve en una lista de tipo Fichero
@@ -26,15 +22,16 @@ public interface ControlFiles {
     
     /**
      * Guarda en la carpeta el Fichero pasado
-     * @param fichero Fichero a guardar
+     * @param nombre Nombre del fichero
+     * @param datos Contenido del fichero
      * @return Retorna true si ha sido correcto o false en caso de que falle.
      */
-    public Boolean guardarFichero(File fichero);
+    public Boolean guardarFichero(String nombre, String datos);
     
     /**
-     * Obtiene el fichero solicitado
+     * Obtiene el fichero solicitado en base64
      * @param fichero Fichero solicitado
      * @return Fichero solicitado
      */
-    public File obtenerFichero(Fichero fichero);
+    public String obtenerFichero(String fichero);
 }

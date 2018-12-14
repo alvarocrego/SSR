@@ -7,6 +7,7 @@ package es.equipoa.ssr.client.gui;
 
 import es.equipoa.ssr.client.dao.Comunication;
 import es.equipoa.ssr.client.util.impl.ConnectionImpl;
+import es.equipoa.ssr.client.util.impl.ConnectionP2PImpl;
 import es.equipoa.ssr.client.util.impl.ControlClientImpl;
 import es.equipoa.ssr.client.util.impl.ControlFilesImpl;
 import javax.swing.JOptionPane;
@@ -263,19 +264,19 @@ public class Application extends javax.swing.JFrame {
 
     private void conectarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conectarButtonActionPerformed
         ControlClientImpl cc = new ControlClientImpl(ficherosCompartidosList, buscarFicherosList);
-        
+
         conectarButton.setEnabled(false);
         desconectarButton.setEnabled(true);
-        
+
         System.out.println("iniciar");
-        
+
         int puerto = Integer.parseInt(portField.getText());
         con = new ConnectionImpl("localhost", puerto);
-        
+
         System.out.println("iniciado");
-        
+
         con.conectar();
-        
+
         con.enviar(cc.actualizarFicherosCompartidos(cfCompartir.obtenerListaDeFicheros()));
 
         System.out.println("conectado");
@@ -292,10 +293,18 @@ public class Application extends javax.swing.JFrame {
                         cc.buscarFicheros(comu.getFicheros());
                         break;
                     case 3: //Respuesta de Peticion de fichero (conxion con el otro cliente)
-//                        cc.responderPeticionFichero(idFichero, )
+                        Thread tc1 = new Thread(() -> {
+                            ConnectionP2PImpl p2p = new ConnectionP2PImpl(9638);
+                            Comunication res = p2p.recibir();
+                            String fichero = cfCompartir.obtenerFichero(res.getMessage());
+                            p2p.enviar(cc.enviarFichero(res.getMessage(), fichero));
+                            p2p.cerrar();
+                        });
+                        tc1.start();
+                        con.enviar(cc.responderPeticionFichero(comu.getMessage()));
                         break;
                     case 4: //Respuesta de Enviar al cliente solicitante la ip y puerto
-                        
+
                         break;
                     default:
 
@@ -327,7 +336,7 @@ public class Application extends javax.swing.JFrame {
             mostrarMensaje("Descargar", "Selecciona un fichero para descargar.", 2);
         } else {
             String idFichero = buscarFicherosList.getSelectedValue().split("~")[1].trim();
-            
+
             Comunication comunication = new Comunication(3);
             comunication.setMessage(idFichero);
             con.enviar(comunication);

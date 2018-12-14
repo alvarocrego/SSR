@@ -134,31 +134,40 @@ public class ControlServerImpl extends Thread implements ControlServer {
         List<Fichero> res = new ArrayList<>();
         ficheros.entrySet().forEach((entry) -> {
             if (entry.getValue().getNombre().contains(busqueda)) {
-                if(entry.getValue().getIdCliente() != cli.getId()){
+                if (entry.getValue().getIdCliente() != cli.getId()) {
                     res.add(entry.getValue());
                 }
             }
         });
         Comunication comu = new Comunication(2);
         comu.setFicheros(res);
-        ServerConnectionImpl.enviar(so, comu);;
+        ServerConnectionImpl.enviar(so, comu);
     }
 
     private Socket getSocketByIdFichero(String idFichero) {
         return clientes.get(ficheros.get(idFichero).getIdCliente()).getSocket();
     }
 
+    private String getNameFicheroByIdFichero(String idFichero) {
+        return ficheros.get(idFichero).getNombre();
+    }
+
     @Override
     public void enviarPeticionFichero(String idFichero) {
         Socket so = getSocketByIdFichero(idFichero);
         Comunication comu = new Comunication(3);
-        comu.getMessage();
+        comu.setMessage(getNameFicheroByIdFichero(idFichero));
         ServerConnectionImpl.enviar(so, comu);
     }
 
     @Override
-    public void enviarSolicitanteIpPuerto() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void enviarSolicitanteIpPuerto(String idFichero, String ip, Integer puerto) {
+        Socket so = getSocketByIdFichero(idFichero);
+        Comunication comu = new Comunication(4);
+        comu.setMessage(getNameFicheroByIdFichero(idFichero));
+        comu.setIp(ip);
+        comu.setPort(puerto);
+        ServerConnectionImpl.enviar(so, comu);
     }
 
 }

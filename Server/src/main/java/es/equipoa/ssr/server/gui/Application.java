@@ -278,7 +278,7 @@ public class Application extends javax.swing.JFrame {
                                     cs.enviarPeticionFichero(comu.getMessage());
                                     break;
                                 case 4: //Enviar al cliente solicitante la ip y puerto
-                                    cs.enviarSolicitanteIpPuerto();
+                                    cs.enviarSolicitanteIpPuerto(comu.getMessage(), comu.getIp(), comu.getPort());
                                     break;
                                 default:
 

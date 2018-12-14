@@ -9,8 +9,10 @@ import es.equipoa.ssr.client.dao.Fichero;
 import es.equipoa.ssr.client.util.ControlFiles;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashMap;
@@ -26,15 +28,11 @@ import java.util.logging.Logger;
 public class ControlFilesImpl implements ControlFiles {
 
     private File carpeta;
+    private String ruta;
     private Map<String, File> archivos;
 
     public ControlFilesImpl(String ruta) {
         inicializar(ruta);
-    }
-
-    @Override
-    public void ControlFiles(String prueba) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
@@ -51,13 +49,21 @@ public class ControlFilesImpl implements ControlFiles {
     }
 
     @Override
-    public Boolean guardarFichero(File fichero) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Boolean guardarFichero(String nombre, String datos) {
+        File file = new File(this.ruta + "\\" + nombre);
+        try {
+            OutputStream stream = new FileOutputStream(file);
+            stream.write(decodeBase64BinaryToFile(datos));
+            stream.close();
+        } catch (IOException e) {
+            return false;
+        }
+        return true;
     }
 
     @Override
-    public File obtenerFichero(Fichero fichero) {
-        return archivos.get(fichero.getNombre());
+    public String obtenerFichero(String fichero) {
+        return encodeFileToBase64Binary(archivos.get(fichero));
     }
 
     /**
@@ -123,15 +129,16 @@ public class ControlFilesImpl implements ControlFiles {
         }
     }
 
-    private String encodeFileToBase64Binary(String fileName)
-            throws IOException {
-
-        File file = new File(fileName);
+    private String encodeFileToBase64Binary(File file) {
         byte[] bytes = leerFichero(file);
         byte[] encoded = Base64.getEncoder().encode(bytes);
         String encodedString = new String(encoded);
 
         return encodedString;
+    }
+
+    private byte[] decodeBase64BinaryToFile(String base64) {
+        return Base64.getDecoder().decode(base64);
     }
 
 }

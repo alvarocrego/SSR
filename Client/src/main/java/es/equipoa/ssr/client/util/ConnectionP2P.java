@@ -15,17 +15,15 @@ import java.net.Socket;
 public interface ConnectionP2P {
 
     /**
-     * Recibir un mensaje proveniente del socket
+     * Recibir un mensaje
      *
-     * @param so Socket por el que se recibirá un mensaje
      * @return Retorna el mensaje recibido de tipo Comunication
      */
-    public Comunication recibir(Socket so);
+    public Comunication recibir();
 
     /**
-     * Cierra el socket proporcionado
+     * Cierra el socket
      *
-     * @param so Socket a cerrar
      */
-    public void cerrar(Socket so);
+    public void cerrar();
 }

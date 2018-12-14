@@ -24,5 +24,5 @@ public interface ControlServer {
 
     public void enviarPeticionFichero(String idFichero);
 
-    public void enviarSolicitanteIpPuerto();
+    public void enviarSolicitanteIpPuerto(String idFichero, String ip, Integer puerto);
 }
