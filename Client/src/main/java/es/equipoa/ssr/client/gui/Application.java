@@ -10,7 +10,9 @@ import es.equipoa.ssr.client.util.impl.ConnectionImpl;
 import es.equipoa.ssr.client.util.impl.ConnectionP2PImpl;
 import es.equipoa.ssr.client.util.impl.ControlClientImpl;
 import es.equipoa.ssr.client.util.impl.ControlFilesImpl;
+import java.awt.Color;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -28,6 +30,13 @@ public class Application extends javax.swing.JFrame {
      */
     public Application() {
         initComponents();
+        jumboHomePanel.setVisible(true);
+        jumboDescargasPanel.setVisible(false);
+        jumboCompartiendoPanel.setVisible(false);
+        bodyHomePanel.setVisible(true);
+        bodyDescargasPanel.setVisible(false);
+        bodyCompartiendoPanel.setVisible(false);
+
     }
 
     /**
@@ -39,49 +48,307 @@ public class Application extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        sidebarPanel = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
+        buttonCompartiendoPanel = new javax.swing.JPanel();
+        indicadorCompartiendoPanel = new javax.swing.JPanel();
+        compartiendoLabel = new javax.swing.JLabel();
+        buttonDescargasPanel = new javax.swing.JPanel();
+        indicadorDescargasPanel = new javax.swing.JPanel();
+        descargasLabel = new javax.swing.JLabel();
+        buttonHomePanel = new javax.swing.JPanel();
+        indicadorHomePanel = new javax.swing.JPanel();
+        homeLabel = new javax.swing.JLabel();
+        headerPanel = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        closePanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jPanel1 = new javax.swing.JPanel();
+        jumboPanel = new javax.swing.JPanel();
+        jumboHomePanel = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
         ipField = new javax.swing.JTextField();
         ipLabel = new javax.swing.JLabel();
         portLabel = new javax.swing.JLabel();
         portField = new javax.swing.JTextField();
         conectarButton = new javax.swing.JButton();
         desconectarButton = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        ficherosCompartidosList = new javax.swing.JList<>();
-        anadirButton = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jPanel3 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        buscarFicherosList = new javax.swing.JList<>();
+        jumboDescargasPanel = new javax.swing.JPanel();
         buscarField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         buscarButton = new javax.swing.JButton();
+        jumboCompartiendoPanel = new javax.swing.JPanel();
+        bodyPanel = new javax.swing.JPanel();
+        bodyHomePanel = new javax.swing.JPanel();
+        bodyDescargasPanel = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        buscarFicherosList = new javax.swing.JList<>();
         descargarButton = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        bodyCompartiendoPanel = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        ficherosCompartidosList = new javax.swing.JList<>();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cliente");
+        setUndecorated(true);
+        setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel1.setText("Cliente");
+        sidebarPanel.setBackground(new java.awt.Color(23, 31, 51));
+        sidebarPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Servidor:"));
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("ALP2");
+        sidebarPanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
+        buttonCompartiendoPanel.setBackground(new java.awt.Color(23, 31, 51));
+        buttonCompartiendoPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                buttonCompartiendoPanelMousePressed(evt);
+            }
+        });
+
+        indicadorCompartiendoPanel.setOpaque(false);
+        indicadorCompartiendoPanel.setPreferredSize(new java.awt.Dimension(3, 50));
+
+        javax.swing.GroupLayout indicadorCompartiendoPanelLayout = new javax.swing.GroupLayout(indicadorCompartiendoPanel);
+        indicadorCompartiendoPanel.setLayout(indicadorCompartiendoPanelLayout);
+        indicadorCompartiendoPanelLayout.setHorizontalGroup(
+            indicadorCompartiendoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 3, Short.MAX_VALUE)
+        );
+        indicadorCompartiendoPanelLayout.setVerticalGroup(
+            indicadorCompartiendoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        compartiendoLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        compartiendoLabel.setForeground(new java.awt.Color(255, 255, 255));
+        compartiendoLabel.setText("Compartiendo");
+
+        javax.swing.GroupLayout buttonCompartiendoPanelLayout = new javax.swing.GroupLayout(buttonCompartiendoPanel);
+        buttonCompartiendoPanel.setLayout(buttonCompartiendoPanelLayout);
+        buttonCompartiendoPanelLayout.setHorizontalGroup(
+            buttonCompartiendoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buttonCompartiendoPanelLayout.createSequentialGroup()
+                .addComponent(indicadorCompartiendoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(compartiendoLabel)
+                .addContainerGap())
+        );
+        buttonCompartiendoPanelLayout.setVerticalGroup(
+            buttonCompartiendoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(indicadorCompartiendoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonCompartiendoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(compartiendoLabel)
+                .addContainerGap())
+        );
+
+        sidebarPanel.add(buttonCompartiendoPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 160, 50));
+
+        buttonDescargasPanel.setBackground(new java.awt.Color(23, 31, 51));
+        buttonDescargasPanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                buttonDescargasPanelMousePressed(evt);
+            }
+        });
+
+        indicadorDescargasPanel.setOpaque(false);
+        indicadorDescargasPanel.setPreferredSize(new java.awt.Dimension(3, 50));
+
+        javax.swing.GroupLayout indicadorDescargasPanelLayout = new javax.swing.GroupLayout(indicadorDescargasPanel);
+        indicadorDescargasPanel.setLayout(indicadorDescargasPanelLayout);
+        indicadorDescargasPanelLayout.setHorizontalGroup(
+            indicadorDescargasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 3, Short.MAX_VALUE)
+        );
+        indicadorDescargasPanelLayout.setVerticalGroup(
+            indicadorDescargasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        descargasLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        descargasLabel.setForeground(new java.awt.Color(255, 255, 255));
+        descargasLabel.setText("Descargas");
+
+        javax.swing.GroupLayout buttonDescargasPanelLayout = new javax.swing.GroupLayout(buttonDescargasPanel);
+        buttonDescargasPanel.setLayout(buttonDescargasPanelLayout);
+        buttonDescargasPanelLayout.setHorizontalGroup(
+            buttonDescargasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buttonDescargasPanelLayout.createSequentialGroup()
+                .addComponent(indicadorDescargasPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(descargasLabel)
+                .addContainerGap())
+        );
+        buttonDescargasPanelLayout.setVerticalGroup(
+            buttonDescargasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(indicadorDescargasPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonDescargasPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(descargasLabel)
+                .addContainerGap())
+        );
+
+        sidebarPanel.add(buttonDescargasPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 160, -1));
+
+        buttonHomePanel.setBackground(new java.awt.Color(41, 57, 80));
+        buttonHomePanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                buttonHomePanelMousePressed(evt);
+            }
+        });
+
+        indicadorHomePanel.setPreferredSize(new java.awt.Dimension(3, 50));
+
+        javax.swing.GroupLayout indicadorHomePanelLayout = new javax.swing.GroupLayout(indicadorHomePanel);
+        indicadorHomePanel.setLayout(indicadorHomePanelLayout);
+        indicadorHomePanelLayout.setHorizontalGroup(
+            indicadorHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 3, Short.MAX_VALUE)
+        );
+        indicadorHomePanelLayout.setVerticalGroup(
+            indicadorHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 50, Short.MAX_VALUE)
+        );
+
+        homeLabel.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        homeLabel.setForeground(new java.awt.Color(255, 255, 255));
+        homeLabel.setText("Home");
+
+        javax.swing.GroupLayout buttonHomePanelLayout = new javax.swing.GroupLayout(buttonHomePanel);
+        buttonHomePanel.setLayout(buttonHomePanelLayout);
+        buttonHomePanelLayout.setHorizontalGroup(
+            buttonHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(buttonHomePanelLayout.createSequentialGroup()
+                .addComponent(indicadorHomePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(homeLabel)
+                .addContainerGap())
+        );
+        buttonHomePanelLayout.setVerticalGroup(
+            buttonHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(indicadorHomePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, buttonHomePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(homeLabel)
+                .addContainerGap())
+        );
+
+        sidebarPanel.add(buttonHomePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 160, 50));
+
+        getContentPane().add(sidebarPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 610));
+
+        headerPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel8.setText("Cliente ALP2");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 11)); // NOI18N
+        jLabel9.setText("0.1v BETA");
+
+        closePanel.setBackground(new java.awt.Color(255, 255, 255));
+        closePanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                closePanelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                closePanelMouseExited(evt);
+            }
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                closePanelMousePressed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel1.setText("X");
+        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+
+        javax.swing.GroupLayout closePanelLayout = new javax.swing.GroupLayout(closePanel);
+        closePanel.setLayout(closePanelLayout);
+        closePanelLayout.setHorizontalGroup(
+            closePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, closePanelLayout.createSequentialGroup()
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(22, 22, 22))
+        );
+        closePanelLayout.setVerticalGroup(
+            closePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+
+        javax.swing.GroupLayout headerPanelLayout = new javax.swing.GroupLayout(headerPanel);
+        headerPanel.setLayout(headerPanelLayout);
+        headerPanelLayout.setHorizontalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(headerPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addContainerGap(489, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, headerPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(closePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        );
+        headerPanelLayout.setVerticalGroup(
+            headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(headerPanelLayout.createSequentialGroup()
+                .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(headerPanelLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(headerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)))
+                    .addComponent(closePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(40, 40, 40))
+        );
+
+        getContentPane().add(headerPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 700, 60));
+
+        jumboPanel.setBackground(new java.awt.Color(71, 120, 197));
+
+        jumboHomePanel.setOpaque(false);
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Conexión con el servidor");
+
+        ipField.setBackground(new java.awt.Color(123, 156, 225));
+        ipField.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        ipField.setForeground(new java.awt.Color(255, 255, 255));
         ipField.setText("localhost");
+        ipField.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
         ipField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ipFieldActionPerformed(evt);
             }
         });
 
+        ipLabel.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        ipLabel.setForeground(new java.awt.Color(255, 255, 255));
         ipLabel.setText("IP:");
 
+        portLabel.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        portLabel.setForeground(new java.awt.Color(255, 255, 255));
         portLabel.setText("Port:");
 
+        portField.setBackground(new java.awt.Color(123, 156, 225));
+        portField.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
+        portField.setForeground(new java.awt.Color(255, 255, 255));
         portField.setText("8182");
+        portField.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
 
+        conectarButton.setBackground(new java.awt.Color(47, 130, 255));
+        conectarButton.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         conectarButton.setLabel("Conectar");
         conectarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -89,6 +356,8 @@ public class Application extends javax.swing.JFrame {
             }
         });
 
+        desconectarButton.setBackground(new java.awt.Color(47, 130, 255));
+        desconectarButton.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         desconectarButton.setText("Desconectar");
         desconectarButton.setEnabled(false);
         desconectarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -97,82 +366,53 @@ public class Application extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout jumboHomePanelLayout = new javax.swing.GroupLayout(jumboHomePanel);
+        jumboHomePanel.setLayout(jumboHomePanelLayout);
+        jumboHomePanelLayout.setHorizontalGroup(
+            jumboHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jumboHomePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ipLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ipField, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(portLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(portField, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(conectarButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(desconectarButton)
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ipLabel)
-                    .addComponent(ipField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(portLabel)
-                    .addComponent(portField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(conectarButton)
-                    .addComponent(desconectarButton)))
-        );
-
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Ficheros Compartidos"));
-
-        jScrollPane1.setViewportView(ficherosCompartidosList);
-
-        anadirButton.setText("Añadir");
-        anadirButton.setEnabled(false);
-
-        jLabel3.setText("Nombre:");
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                .addGroup(jumboHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10)
+                    .addGroup(jumboHomePanelLayout.createSequentialGroup()
+                        .addComponent(ipLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2))
-                    .addComponent(anadirButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addComponent(ipField, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(portLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(portField, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(conectarButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(desconectarButton)))
+                .addContainerGap(224, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        jumboHomePanelLayout.setVerticalGroup(
+            jumboHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jumboHomePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(anadirButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1)
-                .addContainerGap())
+                .addGroup(jumboHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ipField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ipLabel)
+                    .addComponent(portField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(portLabel)
+                    .addComponent(conectarButton)
+                    .addComponent(desconectarButton))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Ficheros"));
+        jumboDescargasPanel.setOpaque(false);
 
-        jScrollPane2.setViewportView(buscarFicherosList);
+        buscarField.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Buscar:");
 
+        buscarButton.setFont(new java.awt.Font("Segoe UI", 0, 12)); // NOI18N
         buscarButton.setText("Buscar");
         buscarButton.setEnabled(false);
         buscarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -181,6 +421,103 @@ public class Application extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout jumboDescargasPanelLayout = new javax.swing.GroupLayout(jumboDescargasPanel);
+        jumboDescargasPanel.setLayout(jumboDescargasPanelLayout);
+        jumboDescargasPanelLayout.setHorizontalGroup(
+            jumboDescargasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jumboDescargasPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jumboDescargasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jumboDescargasPanelLayout.createSequentialGroup()
+                        .addComponent(buscarField, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(buscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel2))
+                .addContainerGap(340, Short.MAX_VALUE))
+        );
+        jumboDescargasPanelLayout.setVerticalGroup(
+            jumboDescargasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jumboDescargasPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jumboDescargasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(buscarField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarButton))
+                .addContainerGap(41, Short.MAX_VALUE))
+        );
+
+        jumboCompartiendoPanel.setOpaque(false);
+
+        javax.swing.GroupLayout jumboCompartiendoPanelLayout = new javax.swing.GroupLayout(jumboCompartiendoPanel);
+        jumboCompartiendoPanel.setLayout(jumboCompartiendoPanelLayout);
+        jumboCompartiendoPanelLayout.setHorizontalGroup(
+            jumboCompartiendoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 680, Short.MAX_VALUE)
+        );
+        jumboCompartiendoPanelLayout.setVerticalGroup(
+            jumboCompartiendoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 108, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jumboPanelLayout = new javax.swing.GroupLayout(jumboPanel);
+        jumboPanel.setLayout(jumboPanelLayout);
+        jumboPanelLayout.setHorizontalGroup(
+            jumboPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jumboPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jumboHomePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jumboPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jumboPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jumboDescargasPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+            .addGroup(jumboPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jumboPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jumboCompartiendoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        jumboPanelLayout.setVerticalGroup(
+            jumboPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jumboPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jumboHomePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jumboPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jumboPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jumboDescargasPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+            .addGroup(jumboPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jumboPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(jumboCompartiendoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
+        getContentPane().add(jumboPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 60, 700, 130));
+
+        bodyPanel.setBackground(new java.awt.Color(255, 255, 255));
+
+        bodyHomePanel.setOpaque(false);
+
+        javax.swing.GroupLayout bodyHomePanelLayout = new javax.swing.GroupLayout(bodyHomePanel);
+        bodyHomePanel.setLayout(bodyHomePanelLayout);
+        bodyHomePanelLayout.setHorizontalGroup(
+            bodyHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 680, Short.MAX_VALUE)
+        );
+        bodyHomePanelLayout.setVerticalGroup(
+            bodyHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 398, Short.MAX_VALUE)
+        );
+
+        bodyDescargasPanel.setOpaque(false);
+
+        jScrollPane2.setViewportView(buscarFicherosList);
+
         descargarButton.setText("Descargar");
         descargarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -188,74 +525,116 @@ public class Application extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(buscarField))
-                            .addComponent(buscarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(descargarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel5.setText("Resultados de la busqueda");
+
+        javax.swing.GroupLayout bodyDescargasPanelLayout = new javax.swing.GroupLayout(bodyDescargasPanel);
+        bodyDescargasPanel.setLayout(bodyDescargasPanelLayout);
+        bodyDescargasPanelLayout.setHorizontalGroup(
+            bodyDescargasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bodyDescargasPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(bodyDescargasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(descargarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 660, Short.MAX_VALUE)
+                    .addGroup(bodyDescargasPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        bodyDescargasPanelLayout.setVerticalGroup(
+            bodyDescargasPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bodyDescargasPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(buscarField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(buscarButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(descargarButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(213, 213, 213)
-                        .addComponent(jLabel1)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+        bodyCompartiendoPanel.setOpaque(false);
+
+        jScrollPane1.setViewportView(ficherosCompartidosList);
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel6.setText("Ficheros Compartidos");
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel7.setText("Solo se comparten los ficheros que estan en la carpeta \"compartir\"");
+
+        javax.swing.GroupLayout bodyCompartiendoPanelLayout = new javax.swing.GroupLayout(bodyCompartiendoPanel);
+        bodyCompartiendoPanel.setLayout(bodyCompartiendoPanelLayout);
+        bodyCompartiendoPanelLayout.setHorizontalGroup(
+            bodyCompartiendoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bodyCompartiendoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addGroup(bodyCompartiendoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(bodyCompartiendoPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel7)
+                        .addGap(0, 305, Short.MAX_VALUE))
+                    .addGroup(bodyCompartiendoPanelLayout.createSequentialGroup()
+                        .addGroup(bodyCompartiendoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1)
+                            .addGroup(bodyCompartiendoPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
+        );
+        bodyCompartiendoPanelLayout.setVerticalGroup(
+            bodyCompartiendoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, bodyCompartiendoPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jLabel7)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        javax.swing.GroupLayout bodyPanelLayout = new javax.swing.GroupLayout(bodyPanel);
+        bodyPanel.setLayout(bodyPanelLayout);
+        bodyPanelLayout.setHorizontalGroup(
+            bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bodyPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bodyHomePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(bodyPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(bodyDescargasPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+            .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(bodyPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(bodyCompartiendoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        bodyPanelLayout.setVerticalGroup(
+            bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(bodyPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(bodyHomePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(bodyPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(bodyDescargasPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+            .addGroup(bodyPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(bodyPanelLayout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(bodyCompartiendoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+
+        getContentPane().add(bodyPanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 190, 700, 420));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void ipFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ipFieldActionPerformed
@@ -314,7 +693,7 @@ public class Application extends javax.swing.JFrame {
         });
         t1.start();
         buscarButton.setEnabled(true);
-        anadirButton.setEnabled(true);
+//        anadirButton.setEnabled(true);
     }//GEN-LAST:event_conectarButtonActionPerformed
 
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
@@ -342,6 +721,68 @@ public class Application extends javax.swing.JFrame {
             con.enviar(comunication);
         }
     }//GEN-LAST:event_descargarButtonActionPerformed
+
+    private void buttonHomePanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonHomePanelMousePressed
+        setColor(buttonHomePanel);
+        indicadorHomePanel.setOpaque(true);
+        resetColor(new JPanel[]{buttonDescargasPanel, buttonCompartiendoPanel}, new JPanel[]{indicadorDescargasPanel, indicadorCompartiendoPanel});
+        jumboHomePanel.setVisible(true);
+        jumboDescargasPanel.setVisible(false);
+        jumboCompartiendoPanel.setVisible(false);
+        bodyHomePanel.setVisible(true);
+        bodyDescargasPanel.setVisible(false);
+        bodyCompartiendoPanel.setVisible(false);
+    }//GEN-LAST:event_buttonHomePanelMousePressed
+
+    private void buttonDescargasPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonDescargasPanelMousePressed
+        System.out.println("miau");
+        setColor(buttonDescargasPanel);
+        indicadorDescargasPanel.setOpaque(true);
+        resetColor(new JPanel[]{buttonHomePanel, buttonCompartiendoPanel}, new JPanel[]{indicadorHomePanel, indicadorCompartiendoPanel});
+        jumboHomePanel.setVisible(false);
+        jumboDescargasPanel.setVisible(true);
+        jumboCompartiendoPanel.setVisible(false);
+        bodyHomePanel.setVisible(false);
+        bodyDescargasPanel.setVisible(true);
+        bodyCompartiendoPanel.setVisible(false);
+    }//GEN-LAST:event_buttonDescargasPanelMousePressed
+
+    private void buttonCompartiendoPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonCompartiendoPanelMousePressed
+        setColor(buttonCompartiendoPanel);
+        indicadorCompartiendoPanel.setOpaque(true);
+        resetColor(new JPanel[]{buttonHomePanel, buttonDescargasPanel}, new JPanel[]{indicadorHomePanel, indicadorDescargasPanel});
+        jumboHomePanel.setVisible(false);
+        jumboDescargasPanel.setVisible(false);
+        jumboCompartiendoPanel.setVisible(true);
+        bodyHomePanel.setVisible(false);
+        bodyDescargasPanel.setVisible(false);
+        bodyCompartiendoPanel.setVisible(true);
+    }//GEN-LAST:event_buttonCompartiendoPanelMousePressed
+
+    private void closePanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closePanelMousePressed
+        System.exit(0);
+    }//GEN-LAST:event_closePanelMousePressed
+
+    private void closePanelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closePanelMouseEntered
+        closePanel.setBackground(Color.red);
+    }//GEN-LAST:event_closePanelMouseEntered
+
+    private void closePanelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closePanelMouseExited
+        closePanel.setBackground(Color.white);
+    }//GEN-LAST:event_closePanelMouseExited
+
+    private void setColor(JPanel panel) {
+        panel.setBackground(new Color(41, 57, 80));
+    }
+
+    private void resetColor(JPanel[] paneles, JPanel[] indicadores) {
+        for (JPanel panel : paneles) {
+            panel.setBackground(new Color(23, 35, 51));
+        }
+        for (JPanel indicador : indicadores) {
+            indicador.setOpaque(false);
+        }
+    }
 
     private void mostrarMensaje(String titulo, String texto, int tipo) {
         switch (tipo) {
@@ -397,26 +838,47 @@ public class Application extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton anadirButton;
+    private javax.swing.JPanel bodyCompartiendoPanel;
+    private javax.swing.JPanel bodyDescargasPanel;
+    private javax.swing.JPanel bodyHomePanel;
+    private javax.swing.JPanel bodyPanel;
     private javax.swing.JButton buscarButton;
     private javax.swing.JList<String> buscarFicherosList;
     private javax.swing.JTextField buscarField;
+    private javax.swing.JPanel buttonCompartiendoPanel;
+    private javax.swing.JPanel buttonDescargasPanel;
+    private javax.swing.JPanel buttonHomePanel;
+    private javax.swing.JPanel closePanel;
+    private javax.swing.JLabel compartiendoLabel;
     private javax.swing.JButton conectarButton;
     private javax.swing.JButton descargarButton;
+    private javax.swing.JLabel descargasLabel;
     private javax.swing.JButton desconectarButton;
     private javax.swing.JList<String> ficherosCompartidosList;
+    private javax.swing.JPanel headerPanel;
+    private javax.swing.JLabel homeLabel;
+    private javax.swing.JPanel indicadorCompartiendoPanel;
+    private javax.swing.JPanel indicadorDescargasPanel;
+    private javax.swing.JPanel indicadorHomePanel;
     private javax.swing.JTextField ipField;
     private javax.swing.JLabel ipLabel;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPanel jumboCompartiendoPanel;
+    private javax.swing.JPanel jumboDescargasPanel;
+    private javax.swing.JPanel jumboHomePanel;
+    private javax.swing.JPanel jumboPanel;
     private javax.swing.JTextField portField;
     private javax.swing.JLabel portLabel;
+    private javax.swing.JPanel sidebarPanel;
     // End of variables declaration//GEN-END:variables
 }
