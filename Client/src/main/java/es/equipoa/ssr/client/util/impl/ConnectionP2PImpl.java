@@ -74,6 +74,7 @@ public class ConnectionP2PImpl implements ConnectionP2P {
     public void cerrar() {
         try {
             this.so.close();
+            this.sc.close();
         } catch (IOException ex) {
             Logger.getLogger(ConnectionP2PImpl.class.getName()).log(Level.SEVERE, null, ex);
         }

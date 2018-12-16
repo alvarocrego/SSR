@@ -683,8 +683,16 @@ public class Application extends javax.swing.JFrame {
 
                         });
                         tc1.start();
+                         {
+                            try {
+                                Thread.sleep(2000);
+                            } catch (InterruptedException ex) {
+                                Logger.getLogger(Application.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
                         con.enviar(cc.responderPeticionFichero(comu.getMessage(), comu.getBase64File(), comu.getIdCliente()));
                         break;
+
                     case 4: //Respuesta de Enviar al cliente solicitante la ip y puerto
                         System.out.println("miau");
 
