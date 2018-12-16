@@ -56,9 +56,11 @@ public class ControlClientImpl implements ControlClient {
         return c;
     }
 
-    public Comunication responderPeticionFichero(String idFichero) {
+    public Comunication responderPeticionFichero(String nombreFichero, String idFichero, Integer idCliente) {
         Comunication c = new Comunication(4);
-        c.setMessage(idFichero);
+        c.setMessage(nombreFichero);
+        c.setBase64File(idFichero);
+        c.setIdCliente(idCliente);
         //hay que obtener la direccion ip pero to much complicado asi que bester ponerla a mano
         c.setIp("localhost");
         c.setPort(9638);

@@ -32,6 +32,7 @@ public class ControlFilesImpl implements ControlFiles {
     private Map<String, File> archivos;
 
     public ControlFilesImpl(String ruta) {
+        this.ruta = ruta;
         inicializar(ruta);
     }
 
@@ -50,12 +51,16 @@ public class ControlFilesImpl implements ControlFiles {
 
     @Override
     public Boolean guardarFichero(String nombre, String datos) {
-        File file = new File(this.ruta + "\\" + nombre);
         try {
-            OutputStream stream = new FileOutputStream(file);
+            System.out.println(this.ruta + "/" + nombre);
+            OutputStream stream = new FileOutputStream(this.ruta + "\\" + nombre);
+            System.out.println("guardando");
+//            OutputStream stream = new FileOutputStream(file);
             stream.write(decodeBase64BinaryToFile(datos));
+            stream.flush();
             stream.close();
         } catch (IOException e) {
+            System.out.println("No he guardado porque soy tonto y he fallado");
             return false;
         }
         return true;

@@ -153,18 +153,21 @@ public class ControlServerImpl extends Thread implements ControlServer {
     }
 
     @Override
-    public void enviarPeticionFichero(String idFichero) {
+    public void enviarPeticionFichero(String idFichero, Integer idCliente) {
         Socket so = getSocketByIdFichero(idFichero);
         Comunication comu = new Comunication(3);
         comu.setMessage(getNameFicheroByIdFichero(idFichero));
+        comu.setBase64File(idFichero);
+        comu.setIdCliente(idCliente);
         ServerConnectionImpl.enviar(so, comu);
     }
 
     @Override
-    public void enviarSolicitanteIpPuerto(String idFichero, String ip, Integer puerto) {
-        Socket so = getSocketByIdFichero(idFichero);
+    public void enviarSolicitanteIpPuerto(String nombreFichero, String idFichero, Integer idCliente, String ip, Integer puerto) {
+        Socket so = clientes.get(idCliente).getSocket();
         Comunication comu = new Comunication(4);
-        comu.setMessage(getNameFicheroByIdFichero(idFichero));
+        comu.setMessage(nombreFichero);
+        comu.setBase64File(idFichero);
         comu.setIp(ip);
         comu.setPort(puerto);
         ServerConnectionImpl.enviar(so, comu);

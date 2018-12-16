@@ -22,7 +22,7 @@ public interface ControlServer {
 
     public void buscarFicheros(Socket so, String busqueda, Cliente cli);
 
-    public void enviarPeticionFichero(String idFichero);
+    public void enviarPeticionFichero(String idFichero, Integer idCliente);
 
-    public void enviarSolicitanteIpPuerto(String idFichero, String ip, Integer puerto);
+    public void enviarSolicitanteIpPuerto(String nombreFichero, String idFichero, Integer idCliente, String ip, Integer puerto);
 }

@@ -11,6 +11,8 @@ import es.equipoa.ssr.client.util.impl.ConnectionP2PImpl;
 import es.equipoa.ssr.client.util.impl.ControlClientImpl;
 import es.equipoa.ssr.client.util.impl.ControlFilesImpl;
 import java.awt.Color;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -673,17 +675,27 @@ public class Application extends javax.swing.JFrame {
                         break;
                     case 3: //Respuesta de Peticion de fichero (conxion con el otro cliente)
                         Thread tc1 = new Thread(() -> {
-                            ConnectionP2PImpl p2p = new ConnectionP2PImpl(9638);
-                            Comunication res = p2p.recibir();
+                            ConnectionP2PImpl p2pServer = new ConnectionP2PImpl(9638);
+                            Comunication res = p2pServer.recibir();
                             String fichero = cfCompartir.obtenerFichero(res.getMessage());
-                            p2p.enviar(cc.enviarFichero(res.getMessage(), fichero));
-                            p2p.cerrar();
+                            p2pServer.enviar(cc.enviarFichero(res.getMessage(), fichero));
+                            p2pServer.cerrar();
+
                         });
                         tc1.start();
-                        con.enviar(cc.responderPeticionFichero(comu.getMessage()));
+                        con.enviar(cc.responderPeticionFichero(comu.getMessage(), comu.getBase64File(), comu.getIdCliente()));
                         break;
                     case 4: //Respuesta de Enviar al cliente solicitante la ip y puerto
+                        System.out.println("miau");
 
+                        ConnectionImpl p2p = new ConnectionImpl(comu.getIp(), comu.getPort());
+                        p2p.conectar();
+                        Comunication peticion = new Comunication(5);
+                        peticion.setMessage(comu.getMessage());
+                        p2p.enviar(peticion);
+                        Comunication responde = p2p.recibir();
+                        cfDescargas.guardarFichero(responde.getMessage(), responde.getBase64File());
+                        p2p.cerrar();
                         break;
                     default:
 
@@ -735,7 +747,6 @@ public class Application extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonHomePanelMousePressed
 
     private void buttonDescargasPanelMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonDescargasPanelMousePressed
-        System.out.println("miau");
         setColor(buttonDescargasPanel);
         indicadorDescargasPanel.setOpaque(true);
         resetColor(new JPanel[]{buttonHomePanel, buttonCompartiendoPanel}, new JPanel[]{indicadorHomePanel, indicadorCompartiendoPanel});

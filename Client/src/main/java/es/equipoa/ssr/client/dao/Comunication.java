@@ -16,6 +16,7 @@ public class Comunication {
 
     private Integer typeMessage;
     private String message;
+    private Integer idCliente;
     private String base64File;
     private List<String> list = new ArrayList<>();
     private List<Fichero> ficheros = new ArrayList<>();
@@ -41,6 +42,14 @@ public class Comunication {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Integer getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(Integer idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getBase64File() {

@@ -275,10 +275,10 @@ public class Application extends javax.swing.JFrame {
                                     cs.buscarFicheros(aux, comu.getMessage(), cliAux);
                                     break;
                                 case 3: //Peticion de fichero (conxion con el otro cliente)
-                                    cs.enviarPeticionFichero(comu.getMessage());
+                                    cs.enviarPeticionFichero(comu.getMessage(), cliAux.getId());
                                     break;
                                 case 4: //Enviar al cliente solicitante la ip y puerto
-                                    cs.enviarSolicitanteIpPuerto(comu.getMessage(), comu.getIp(), comu.getPort());
+                                    cs.enviarSolicitanteIpPuerto(comu.getMessage(), comu.getBase64File(), comu.getIdCliente(), comu.getIp(), comu.getPort());
                                     break;
                                 default:
 
