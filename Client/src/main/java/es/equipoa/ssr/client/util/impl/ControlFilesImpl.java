@@ -53,7 +53,7 @@ public class ControlFilesImpl implements ControlFiles {
     public Boolean guardarFichero(String nombre, String datos) {
         try {
             System.out.println(this.ruta + "/" + nombre);
-            OutputStream stream = new FileOutputStream(this.ruta + "\\" + nombre);
+            OutputStream stream = new FileOutputStream(this.ruta + "/" + nombre);
             System.out.println("guardando");
 //            OutputStream stream = new FileOutputStream(file);
             stream.write(decodeBase64BinaryToFile(datos));
