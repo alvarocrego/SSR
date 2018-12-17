@@ -13,6 +13,7 @@ import es.equipoa.ssr.client.util.impl.ControlFilesImpl;
 import java.awt.Color;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -75,6 +76,8 @@ public class Application extends javax.swing.JFrame {
         portField = new javax.swing.JTextField();
         conectarButton = new javax.swing.JButton();
         desconectarButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         jumboDescargasPanel = new javax.swing.JPanel();
         buscarField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
@@ -368,6 +371,12 @@ public class Application extends javax.swing.JFrame {
             }
         });
 
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("IP Local:");
+
+        jTextField1.setBackground(new java.awt.Color(123, 156, 225));
+        jTextField1.setBorder(javax.swing.BorderFactory.createEmptyBorder(3, 3, 3, 3));
+
         javax.swing.GroupLayout jumboHomePanelLayout = new javax.swing.GroupLayout(jumboHomePanel);
         jumboHomePanel.setLayout(jumboHomePanelLayout);
         jumboHomePanelLayout.setHorizontalGroup(
@@ -377,18 +386,24 @@ public class Application extends javax.swing.JFrame {
                 .addGroup(jumboHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
                     .addGroup(jumboHomePanelLayout.createSequentialGroup()
-                        .addComponent(ipLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(ipField, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(portLabel)
+                        .addGroup(jumboHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jumboHomePanelLayout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jTextField1))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jumboHomePanelLayout.createSequentialGroup()
+                                .addComponent(ipLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(ipField, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(portLabel)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(portField, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(conectarButton)
                         .addGap(18, 18, 18)
                         .addComponent(desconectarButton)))
-                .addContainerGap(224, Short.MAX_VALUE))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
         jumboHomePanelLayout.setVerticalGroup(
             jumboHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -403,7 +418,11 @@ public class Application extends javax.swing.JFrame {
                     .addComponent(portLabel)
                     .addComponent(conectarButton)
                     .addComponent(desconectarButton))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jumboHomePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         jumboDescargasPanel.setOpaque(false);
@@ -644,15 +663,19 @@ public class Application extends javax.swing.JFrame {
     }//GEN-LAST:event_ipFieldActionPerformed
 
     private void conectarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conectarButtonActionPerformed
-        ControlClientImpl cc = new ControlClientImpl(ficherosCompartidosList, buscarFicherosList);
-
+        ControlClientImpl cc = new ControlClientImpl(jTextField1.getText(), ficherosCompartidosList, buscarFicherosList);
+        DefaultListModel model = new DefaultListModel();
+        for(String fichero:cfCompartir.obtenerListaDeFicheros()) {
+            model.addElement(fichero);
+        }
+        ficherosCompartidosList.setModel(model);
         conectarButton.setEnabled(false);
         desconectarButton.setEnabled(true);
 
         System.out.println("iniciar");
 
         int puerto = Integer.parseInt(portField.getText());
-        con = new ConnectionImpl("localhost", puerto);
+        con = new ConnectionImpl(ipField.getText(), puerto);
 
         System.out.println("iniciado");
 
@@ -884,6 +907,7 @@ public class Application extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -892,6 +916,7 @@ public class Application extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JPanel jumboCompartiendoPanel;
     private javax.swing.JPanel jumboDescargasPanel;
     private javax.swing.JPanel jumboHomePanel;

@@ -22,6 +22,7 @@ import javax.swing.JList;
 public class ControlClientImpl implements ControlClient {
 
     private List<Fichero> ficherosCompartidos = new ArrayList<>();
+    String ipLocal = "";
 
     private JList<String> listaFicherosCompartidos;
     private JList<String> listaFicherosBuscados;
@@ -30,12 +31,14 @@ public class ControlClientImpl implements ControlClient {
      * El constructor necesita que se pasen las dos JList de la interfaz para
      * poder actualizarla
      *
+     * @param ipLocal Ip local del cliente
      * @param listaFicherosCompartidos JList que muestra los ficheros
      * compartidos con el servidor
      * @param listaFicherosBuscados JList que muestra los ficheros que ha
      * recibido del servidor
      */
-    public ControlClientImpl(JList<String> listaFicherosCompartidos, JList<String> listaFicherosBuscados) {
+    public ControlClientImpl(String ipLocal, JList<String> listaFicherosCompartidos, JList<String> listaFicherosBuscados) {
+        this.ipLocal = ipLocal;
         this.listaFicherosCompartidos = listaFicherosCompartidos;
         this.listaFicherosBuscados = listaFicherosBuscados;
     }
@@ -62,7 +65,7 @@ public class ControlClientImpl implements ControlClient {
         c.setBase64File(idFichero);
         c.setIdCliente(idCliente);
         //hay que obtener la direccion ip pero to much complicado asi que bester ponerla a mano
-        c.setIp("localhost");
+        c.setIp(ipLocal);
         c.setPort(9638);
 
         return c;
